@@ -1,1 +1,35 @@
-# Test page
+import Image from 'next/image';
+import paymentsBannerImg from '../images/frame2326.png';
+import connectingStripeExpress from '../images/connectingStripeExpress.gif';
+import { HeroPattern } from '../components/HeroPattern'
+
+<HeroPattern />
+
+# Getting Paid
+Get paid for your digital products
+
+<Image src={paymentsBannerImg} className="rounded-lg w-full" />
+
+Whop makes it super easy for you to get paid for whatever digital product you’re selling! We offer multiple ways to accept payment, such as credit card, Google Pay, Apple Pay, and crypto-based payments. This allows your customers to have maximum flexibility when purchasing your product and makes it super smooth for you to receive your funds. 
+
+## Stripe
+
+In order to process card payments and payout businesses, we have partnered with Stripe. Using ****Stripe Express****, you can easily sign up and connect your bank account to start selling on Whop. All payouts via Stripe are made via ACH and paid out in the currency your customers pay in. Additionally, you can fully customize the timeframe and day you get paid on, whether it’s everyday, every week, every month or every Thursday, it is fully in your control.
+
+On Whop, we offer company owners looking to use Stripe the ability to connect their existing Stripe account (Stripe standard) or create a new Stripe account (Stripe express).
+
+## Stripe Express
+
+If you do not have your own Stripe account already, Stripe Express is the option for you. Simply follow the onboarding flow and click ‘**Get started**’. This will take you to your product page where you can, ‘**Add payment method**’ and select the country you reside in. If your country is one where VAT applies (EU & UK), you can apply for Whop to be your MoR. Once this has been finalized simply select ‘**Open Stripe**’ and finish their onboarding steps.
+
+<Image src={connectingStripeExpress} className="rounded-lg w-full" />
+
+Additional Stripe questions can be found here.
+
+## Tipalti & Paypal payouts
+
+If the country you or your business resides in is not supported by Stripe we offer alternative payout options. Integrating with Whop, you can be paid out directly by our payout provider Tipalti. Tipalti enables you to withdraw your funds via PayPal, ACH, or eCheck. Find out more about how you can withdraw your funds here. 
+
+## Crypto payouts
+
+With Whop, you can accept ETH straight to your ERC20 wallet. You’ll be able to deploy a wallet straight from the Whop dashboard and all payments will go straight into the wallet at the time of purchase. It’s as easy as that! In addition, we also provide support through Coinbase Commerce. Learn more about all of our Crypto payments here.

@@ -188,7 +188,6 @@ export const navigation = [
     title: 'Getting Started',
     links: [
       { title: 'What is Whop?', href: '/' },
-      { title: 'Selling your product', href: '/selling' },
       { title: 'Fees', href: '/fees' },
     ],
   },

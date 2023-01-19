@@ -1,51 +1,60 @@
 import { Button } from './Button'
 import { Heading } from './Heading'
+import Image from 'next/image'
+import softwareBlack from '../images/softwareBlack.png'
+import discordBlack from '../images/discordBlack.png'
+import templateBlack from '../images/templateBlack.png'
 
 const guides = [
   {
-    href: '/authentication',
-    name: 'Authentication',
-    description: 'Learn how to authenticate your API requests.',
+    href: '/software',
+    name: 'Software',
+    description: 'Sell access to your web app or downloadable software through Whop’s powerful API.',
+    image: softwareBlack,
   },
   {
-    href: '/pagination',
-    name: 'Pagination',
-    description: 'Understand how to work with paginated responses.',
+    href: '/discord',
+    name: 'Discord',
+    description: 'Sell access to your Discord community through Whop’s direct Discord integration.',
+    image: discordBlack,
   },
   {
-    href: '/errors',
-    name: 'Errors',
+    href: '/templates',
+    name: 'Templates',
     description:
-      'Read about the different types of errors returned by the API.',
-  },
-  {
-    href: '/webhooks',
-    name: 'Webhooks',
-    description:
-      'Learn how to programmatically configure webhooks for your app.',
+      'Sell access to your templates and make digital fulfilment and distribution easy.',
+    image: templateBlack,
   },
 ]
 
 export function Guides() {
   return (
     <div className="my-16 xl:max-w-none">
-      <Heading level={2} id="guides">
-        Guides
+      <Heading level={2} id="official-libraries">
+        Quick Start Guides
       </Heading>
-      <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
         {guides.map((guide) => (
-          <div key={guide.href}>
-            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
-              {guide.name}
-            </h3>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-              {guide.description}
-            </p>
-            <p className="mt-4">
-              <Button href={guide.href} variant="text" arrow="right">
-                Read more
-              </Button>
-            </p>
+          <div key={guide.name} className="flex flex-row-reverse gap-6">
+            <div className="flex-auto">
+              <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+                {guide.name}
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                {guide.description}
+              </p>
+              <p className="mt-4">
+                <Button href={guide.href} variant="text" arrow="right" className='text-[#fc8f79]'>
+                  Learn More
+                </Button>
+              </p>
+            </div>
+            <Image
+              src={guide.image}
+              alt=""
+              className="h-10 w-auto"
+              unoptimized
+            />
           </div>
         ))}
       </div>
