@@ -1,1 +1,26 @@
-# Test page
+import { HeroPattern } from '../components/HeroPattern'
+
+<HeroPattern />
+
+# Notifications
+
+Notification events that alert consumers 
+
+![Notifications Header Image](https://i.imgur.com/BLztQHF.png){{ className: 'rounded-lg w-full' }}
+
+Whop sends your customers automatic notifications for key actions and upcoming payment dates to increase consumer retention rates. Below is a comprehensive breakdown of our notifications:
+
+| Event | Notification | Sent When |
+|:--------:|:--------:|:--------:|
+| Payment Failed | Email & Discord DM | When a Stripe invoice comes in that failed to charge | 
+| Crypto Payment Failed | Email & Discord DM | - When a crypto payment fails <br/>- Notification will say whether or not to update their wallet balance or allowance |
+| Membership Expired | Email & Discord DM | When a membership’s status changes from completed to expired and the membership is still renewable (ex. inside of grace period days) |
+| Upcoming Expiration | Email & Discord DM | Sends the notification to all memberships with a completed status on a one time, refillable plan three days before expiry. |
+| Additional Free Days | Email & Discord DM | Anytime free days are added to a user’s membership via the Whop Business dashboard. |
+| Upcoming Renewal | Email | Sends the notification to all active or trialing memberships on renewal plans where cancel at period end is false 24 hours before the renewal period end. |
+| Order Confirmation | Email | When a user completes a successful checkout for a membership from a Plan. |
+| Waitlist Approved | Email | Whenever a member's waitlist entry is a approved |
+| Raffle Winner | Email | Whenever a member wins a raffle |
+| Low Crypto Balance | Email | - When the allowance or wallet balance is lower than the renewal price. <br/>- Sent 3 days before payment is due |
+
+Emails are sent four times and Discord DMs are sent two times, before both halt. 

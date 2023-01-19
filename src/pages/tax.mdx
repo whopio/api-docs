@@ -1,1 +1,23 @@
-# Test page
+import { HeroPattern } from '../components/HeroPattern'
+
+<HeroPattern />
+
+# Sales Tax & VAT
+
+Whop is a <u>merchant of record</u> (MoR) and handles VAT (sales tax), incurring payment liability for all digital products sold on our platform. 
+
+Customers who purchase products on Whop from businesses who are using Whop as their Merchant of Record (MoR) will pay sales tax if they are from the EU or the UK. However, Whop will automatically remit the taxes on behalf of your business, so you do not have to worry about a thing.
+
+## Using Whop for sales tax
+
+If you haven’t already connected Whop as your Merchant of Record (MoR), please go to our MoR documentation. 
+
+## Using your own Stripe account
+
+If you choose to link your own Stripe account, you can choose to collect tax yourself. However, you will be responsible for remitting the taxes. Using your own Stripe account, you can additionally enable customers to provide their VAT ID on checkout so that it will show up on their invoice*.* To do this simply head to your ‘**Settings**’ page, select the ‘**Legal**’ tab and toggle on the collection of VAT ID’s for customers.
+
+![VAT ID Toggle](https://i.imgur.com/6Wvo2jE.gif){{ className: 'rounded-lg w-full' }}
+
+If you are using your own Stripe account, you can choose if you are using inclusive or exclusive tax. Exclusive tax will be added on top of the price for the customer at checkout, Inclusive tax will just make it appear on the customers invoice. You can export of this data via the ‘**Payments**’ page.
+
+*Disclaimer: This documentation is neither legal advice nor tax advice. Whop recommends that you speak to your tax advisor with any questions or concerns regarding tax reporting.*

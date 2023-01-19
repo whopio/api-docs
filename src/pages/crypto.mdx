@@ -1,1 +1,79 @@
-# Test page
+import { HeroPattern } from '../components/HeroPattern'
+
+<HeroPattern />
+
+# Crypto Payments
+
+Receive crypto payments for your digital products
+
+![Crypto Payments Header](https://i.imgur.com/Q6YeyHy.png){{ className: 'rounded-lg w-full' }}
+
+When selling access to your digital products, you should be provided with the flexibility to choose how you receive payments. One of the more trendier ways to accept payments and get paid on Whop is through crypto payments. 
+
+Our crypto payments are broken down into three parts, offering support to **ETH** payments, **Subscription-based** payments, and **Coinbase Commerce**. 
+
+A breakdown of associated fees can be found here.
+
+## Initial set-up
+
+For Whop’s native crypto payments, the deployment of an Ethereum payment gateway contract is required to receive your payments. To create an Ethereum payment gateway, go to the ‘**Settings**’ page and select the ‘**Billing**’ tab. Once done, connect your ’**Crypto wallet**’ - doing this you will pay a small transaction ‘**Gas fee**’ to deploy the gateway. Once finalized, you should receive an Email confirming the success of your new payment method.
+
+![Crypto Connection](https://i.imgur.com/ePClspF.gif){{ className: 'rounded-lg w-full' }}
+
+## Crypto subscription-based payments
+
+For subscriptions, businesses can set up crypto-based subscriptions using wETH (Wrapped Ethereum) on Whop. wETH enables Whop to automatically pull from an allowance of crypto in the purchasers wallet each month to pay for your product. 
+
+## Adding crypto as a pricing option
+
+For both **ETH** and **Subscription-based** payments, simply navigate to the desired **Pass** you want to add crypto to, select ‘**Add pricing option**’ and check the box for ‘**Ethereum’**. To toggle between recurring subscription payments and one-time simply select the time-frame dropdown.
+
+![Adding Crypto Pricing](https://cdn.discordapp.com/attachments/1028424503707062362/1065705978424725614/AddingCryptoPricing.gif){{ className: 'rounded-lg w-full' }}
+
+## Withdrawing wETH and ETH from Whop
+
+Now that you have added your pricing options and deployed the ETH payment gateway you will be able to withdraw your payments as you get sales. To do this simply navigate to the **‘Billing**’ tab via the **Settings** menu and reconnect the same wallet you used to deploy the gateway contract. From here, you can click withdraw and easily receive all of your funds!
+
+![Withdrawing Crypto](https://i.imgur.com/wgUrUVo.gif){{ className: 'rounded-lg w-full' }}
+
+## Coinbase commerce
+
+In addition to Whop’s native wETH and Ethereum payments. Businesses can accept and charge, Bitcoin (BTC), USDC (USD Coin), Litecoin (LTC), Dai, and Ethereum payments via Coinbase Commerce. 
+
+When Coinbase Commerce payments are used - all types of crypto accepted are converted into USD and added to your Whop balance. These funds can be transferred out of Whop via ACH, PayPal, wire, or a paper check using our payout provider Tipalti. Funds take 2-3 days to reach out account after a withdrawal has been requested, and may be subject to a withdrawal fee or FX fees depending on your region.
+
+Please note that Coinbase commerce payments cannot be subscription based.
+
+## Adding Coinbase commerce as a pricing option
+
+Adding Coinbase commerce as a pricing option is as simple as going to your **Passes** page, selecting ‘**Add pricing option’**, choosing **one-time** **payment** from the drop down and checking the box that shows up for Coinbase commerce.
+
+![Coinbase Commerce Pricing](https://cdn.discordapp.com/attachments/1028424503707062362/1065708737748291714/CoinbaseCommercePiricing.gif){{ className: 'rounded-lg w-full' }}
+
+## Withdrawing funds
+
+Once your funds have been converted, to access your funds for withdrawal-able balance, navigate to **[Whop](http://Whop.com).com,** select **Account settings**, go to **Your Balance**, select **Withdraw** and fill in the respective fields to receive your funds.
+
+![Withdrawing Funds](https://i.imgur.com/82nkINQ.gif){{ className: 'rounded-lg w-full' }}
+
+## Crypto Payments FAQ:
+
+- Can I charge crypto in USD (or another currency?)
+
+By default, ETH payments are pegged to an USD amount. What this means is that the amount of Ethereum charged will fluctuate as the price of Ethereum increases or drops.
+
+To have the price of your product denominated in ETH, (Eg. 0.1 ETH is charged regardless if it is worth $100 or $1000 USD). Simply select the toggle for currency next on the pricing option screen and select ETH. 
+
+- How can I accepting both crypto and fiat?
+
+Simply toggle both Fiat and Ethereum payment methods when adding a pricing option.
+
+- Overdue Crypto-based subscription payments
+
+If the automatic renewal fails, Whop will automatically attempt to withdraw wETH payments 4 times over a period of 6 days, providing additional email follow ups to notify the member. 
+
+If you would like to enable overdue members to still access their perks over these 6 days. Simply navigate to ‘**Checkout**’ and toggle on ‘**Access while past due.**‘
+
+- What happens if someone Overpays or Underpays for their correct subscription?
+
+If a user underpays or overpays for their purchase, the subscription will not generate and it will be sent to your **Unresolved** tab. To access this page, navigate to **Payments**, and click on **Unresolved,** and follow the prompts. If you do not have any underpaid or overpaid payments, this tab will not be visible.

@@ -1,1 +1,62 @@
-# Test page
+import { HeroPattern } from '../components/HeroPattern'
+
+<HeroPattern />
+
+# Payment FAQ
+
+<br/>
+
+- How can I reduce Stripe account shutdowns?
+
+It is possible for Stripe to terminate or restrict accounts that have unusual payment activity or raise flags. The following practices can help reduce your chances of being shutdown 
+
+1. Avoid taking in high payment volumes across a short time span
+
+Especially if you are operating off a new Stripe account, Stripe will deem high payment volumes suspect of fraudulent activity. Slowly accepting payments and gradually increasing your payment volume over the course of a few weeks/months is recommended.
+
+1. Reduce disputes / chargebacks.
+
+If a new account with only handful of payments receives a chargeback, your chargeback percentage will likely be very high. This can cause Stripe to immediately shut down your account. Try to ensure no customer chargeback on their payment, instead opting to refund someone back before they chargeback may be in your best interest. 
+
+1. Write a clear product description or create a business landing page
+
+Having a clear description of your product or services can give Stripe the information they need to verify your business is legitimate. A short or very vague description will raise questions on the validity of the products or services you are selling. In addition, creating a custom website that showcases your product can also prove the legitimacy of your products.
+
+*While Whop can give advice on how to navigate these situations, we have no control over Stripe’s decisions to close or restrict your accounts.*
+
+- How do product restrictions and recharging payments work when a failed subscription payment occurs?
+
+When a failed payment occurs for a subscription, by default the subscription for the user will remain active as Stripe attempts to recharge the failed renewal payment. For Discord communities, the customer will continue to have access to your server with the given role. For Software, the customer will continue to have access to your application using their license key or web app.
+
+Stripe will follow its standard ‘Smart Retry’ timeline, which is 4 charge reattempts over the span of ~1 week. If a ‘Smart Retry’ is successful, the user subscription will continue like normal. If the ‘Smart Retries’ is unsuccessful, access to the perks will be terminated. 
+
+If you would not like the customer to have access to these perks while Stripe runs its ‘Smart Retry’ system you can **disable** this by going to **Settings**, then the **Checkout** tab and toggling off ‘**Access while past due**’.
+
+![Past Due Toggle Off](https://i.imgur.com/jktXHhc.gif){{ className: 'rounded-lg w-full' }}
+
+Please note that toggling off ‘**Access while past due**’ will run a cancellation action on any past due subscriptions.
+
+If you would like to customize the schedule and the number of payment retries of ‘**Smart Retries**’ you can adjust your settings on Stripe here. Please note that you can only do this if you are using Stripe Standard. 
+
+- What about Crypto renewal payments? Is the past due system different?
+
+wETH renewal payments follow a similar retry pattern as Stripe retry payments. Whop will attempted to charge the wETH 4 times over a period of 6 days.
+
+- How can I issue a refund to a customer?
+
+In order to refund a payment, simply navigate to the **Payments** page, find and click on ‘**…**’ icon next to the payment you want to refund. From there you will have an option to either partially refund the payment or fully refund (default). Simply click **Confirm** and the payment is automatically refunded.
+
+![Refunding Member](https://i.imgur.com/ZAMsX28.gif){{ className: 'rounded-lg w-full' }}
+
+**Please note you cannot refund a payment if:**
+
+1. The payment is already refunded
+2. The payment has failed
+3. If it is a Crypto payment
+4. If it is a cancelled subscription payment
+
+- Can I customize the frequency of my Stripe payout?
+
+Yes, you can customize the frequency you are automatically paid out. By default Stripe has a processing time of up to a **7-day period**. To customize, simply go to the **Settings** tab, select **Billing** and if your Stripe is connected you can select the ‘**Automatic payout frequency** toggle’ and choose the frequency. In addition, you can change the day you are paid out with the subsequent toggle.
+
+![Payout Frquency](https://i.imgur.com/xvt1uW4.gif){{ className: 'rounded-lg w-full' }}
