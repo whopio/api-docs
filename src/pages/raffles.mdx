@@ -1,1 +1,40 @@
-# Test page
+import { HeroPattern } from '../components/HeroPattern'
+
+<HeroPattern />
+
+<div className='lead'>
+
+# Raffles
+
+A way to host a lottery for your product
+
+![Raffle Header](https://i.imgur.com/8R3cITY.png){{ className: 'rounded-lg w-full' }}
+
+Raffles are a fun way to select who will be able to buy your product when demand is high. Raffles on Whop are easy to set up and cause no friction to the customer. All customers will authorize their card when entering the raffle, so if they win, they are charged automatically. 
+
+## Creating a raffle
+
+Creating a raffle for your product requires you to add an additional pricing option. To get create your first raffle, follow the steps below;
+
+1. Navigate to your ‘**Products**’ tab on your dashboard
+2. Click the product you want to create a raffle for
+3. Once there, select ‘**Add pricing option**’ and select ‘**Release**’
+4. Next, select ‘**Raffle**’. Here you can customize the number of winners and end date of your raffle
+5. Once finalized, finalize the rest of your pricing option and hit ‘**Save**’
+
+![Creating Raffle Demo](https://cdn.discordapp.com/attachments/1060606572746768526/1066090520956391465/CreatingRaffle.gif){{ className: 'rounded-lg w-full' }}
+
+## Raffles tab
+
+Once you have created your first raffle, the **‘Raffles**’ tab will appear on your dashboard. The Raffles tab enables you to do the following;
+
+- Edit Raffle - Quickly edit your raffle details
+- View Pass - View the pass in which the raffle was created under
+- Duplicate Raffle - Quickly create another raffle with the same settings
+- Export All Entries - Get a CSV export of user's information that has entered your raffle
+- End Early - Immediately ends the raffle and picks winners
+- Send Webhook - Sends a enter raffle webhook to the raffle webhook channel set within the Whop Dash [Discord settings](https://dash.whop.com/settings/discord) page
+
+You can view all raffle entries (both winners and losers) of past raffles on the ‘**Raffles**’ page under ‘**Ended raffles**’.
+
+</div>

@@ -212,26 +212,22 @@ export const navigation = [
     ],
   },
   {
-    title: 'Product',
+    title: 'Features',
     links: [
-      { title: 'Product Page', href: '/product' },
       { title: 'Affiliates', href: '/affiliates' },
-      { title: 'Checkout Links', href: '/checkout-links' },
-      { title: 'Reviews and user feedback', href: '/reviews' },
-      { title: 'API', href: '/api' },
-      { title: 'Quick actions', href: '/actions' },
-      { title: 'Team Members', href: '/team' },
-      { title: 'Email tools', href: '/email' },
-      { title: 'Raffles', href: '/raffles' },
       { title: 'Promocodes', href: '/promocodes' },
-      { title: 'Welcome Message', href: '/welcome' },
+      { title: 'User Feedback', href: '/reviews' },
+      { title: 'Checkout Links', href: '/checkout-links' },
+      { title: 'Waitlist', href: '/waitlist' },
+      { title: 'Raffles', href: '/raffles' },
+      { title: 'Team Members', href: '/team' },
+      { title: 'Quick actions', href: '/actions' },
     ],
   },
   {
     title: 'Branding',
     links: [
-      { title: 'Use your own website', href: '/hosted' },
-      { title: 'SEO', href: '/seo' },
+      { title: 'Website Customization', href: '/hosted' },
       { title: 'Embeds', href: '/embeds' },
       { title: 'Graphic Design / VFX Services', href: '/graphic' },
     ],
@@ -250,7 +246,6 @@ export const navigation = [
     title: 'Discord Communities',
     links: [
       { title: 'Start selling', href: '/discord-intro' },
-      { title: 'Discord FAQ', href: '/discord-faq' },
     ],
   },
   {
