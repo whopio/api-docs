@@ -31,7 +31,7 @@ export function Guides() {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="official-libraries">
-        Quick Start Guides
+        Guides
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
         {guides.map((guide) => (
@@ -45,7 +45,7 @@ export function Guides() {
               </p>
               <p className="mt-4">
                 <Button href={guide.href} variant="text" arrow="right" className='text-[#fc8f79]'>
-                  Learn More
+                  Learn more
                 </Button>
               </p>
             </div>

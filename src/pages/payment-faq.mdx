@@ -8,7 +8,7 @@ import { HeroPattern } from '../components/HeroPattern'
 
 <br/>
 
-- How can I reduce Stripe account shutdowns?
+**How can I reduce Stripe account shutdowns?**
 
 It is possible for Stripe to terminate or restrict accounts that have unusual payment activity or raise flags. The following practices can help reduce your chances of being shutdown 
 
@@ -26,7 +26,7 @@ Having a clear description of your product or services can give Stripe the infor
 
 *While Whop can give advice on how to navigate these situations, we have no control over Stripe’s decisions to close or restrict your accounts.*
 
-- How do product restrictions and recharging payments work when a failed subscription payment occurs?
+**How do product restrictions and recharging payments work when a failed subscription payment occurs?**
 
 When a failed payment occurs for a subscription, by default the subscription for the user will remain active as Stripe attempts to recharge the failed renewal payment. For Discord communities, the customer will continue to have access to your server with the given role. For Software, the customer will continue to have access to your application using their license key or web app.
 
@@ -40,11 +40,11 @@ Please note that toggling off ‘**Access while past due**’ will run a cancell
 
 If you would like to customize the schedule and the number of payment retries of ‘**Smart Retries**’ you can adjust your settings on Stripe here. Please note that you can only do this if you are using Stripe Standard. 
 
-- What about Crypto renewal payments? Is the past due system different?
+**What about Crypto renewal payments? Is the past due system different?**
 
 wETH renewal payments follow a similar retry pattern as Stripe retry payments. Whop will attempted to charge the wETH 4 times over a period of 6 days.
 
-- How can I issue a refund to a customer?
+**How can I issue a refund to a customer?**
 
 In order to refund a payment, simply navigate to the **Payments** page, find and click on ‘**…**’ icon next to the payment you want to refund. From there you will have an option to either partially refund the payment or fully refund (default). Simply click **Confirm** and the payment is automatically refunded.
 
@@ -57,7 +57,7 @@ In order to refund a payment, simply navigate to the **Payments** page, find and
 3. If it is a Crypto payment
 4. If it is a cancelled subscription payment
 
-- Can I customize the frequency of my Stripe payout?
+**Can I customize the frequency of my Stripe payout?**
 
 Yes, you can customize the frequency you are automatically paid out. By default Stripe has a processing time of up to a **7-day period**. To customize, simply go to the **Settings** tab, select **Billing** and if your Stripe is connected you can select the ‘**Automatic payout frequency** toggle’ and choose the frequency. In addition, you can change the day you are paid out with the subsequent toggle.
 
