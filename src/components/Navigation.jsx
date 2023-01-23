@@ -231,16 +231,16 @@ export const navigation = [
       { title: 'Graphic Design / VFX Services', href: '/graphic' },
     ],
   },
-  // {
-  //   title: 'Software',
-  //   links: [
-  //     { title: 'Getting Started', href: '/software-intro' },
-  //     { title: 'Webhook Integration', href: '/webhook' },
-  //     { title: 'API Integration', href: '/software-api' },
-  //     { title: 'Available templates to get you started', href: '/templates' },
-  //     { title: 'Software FAQ', href: '/software-faq' },
-  //   ],
-  // },
+  {
+    title: 'Software',
+    links: [
+      { title: 'Getting Started', href: '/software-intro' },
+      { title: 'Webhook Integration', href: '/webhook' },
+      { title: 'API Integration', href: '/software-api' },
+      { title: 'Available templates to get you started', href: '/templates' },
+      { title: 'Software FAQ', href: '/software-faq' },
+    ],
+  },
   {
     title: 'Discord Communities',
     links: [

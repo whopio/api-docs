@@ -1,1 +1,35 @@
-# Test page
+import { HeroPattern } from '../components/HeroPattern'
+
+<HeroPattern />
+
+<div className='lead'>
+
+# Software FAQ
+
+### Does Whop have any available templates to get me started?
+
+[Whop SaaS Template - Vercel](https://vercel.com/templates/next.js/whop-template)
+
+### How can I integrate license keys on Whop?
+
+When users purchase access to products on Whop, they are given a license key. In your software, you can optionally choose to require your users to enter a license key in order to use your software. In order to fetch a users membership by license key, you can use [this endpoint](https://dev.whop.com/reference/retrieve_membership).
+
+## How long should the integration take?
+
+All you are really doing, is adding a callback to accept users from Whop. This should take no more than an hour of focus :)
+
+### Do I need to alter my sign up flow?
+
+No. You can think of this as adding an additional oauth option, except you don’t need to put this on your login page. This is because users who have purchased from Whop, will go directly to your site already logged in. They won’t need to login again.
+
+### I am already using Stripe. Is it hard to switch?
+
+You are not switching. Whop does not replace Stripe. Whop is simply an additional distribution channel for your product. In fact, you can link your existing Stripe to Whop in order to process payments on the same Stripe account.
+
+### What is it like to buy software on Whop?
+
+After purchasing access to software on Whop, users will see an area where they can view their purchased pass. Here, the user can click to navigate to your app.
+
+![Accessing Software](https://i.imgur.com/sf1Ws0R.png){{ className: 'rounded-lg w-full' }}
+
+</div>
