@@ -236,8 +236,8 @@ export const navigation = [
     links: [
       { title: 'Getting Started', href: '/software-intro' },
       { title: 'Webhook Integration', href: '/webhook' },
-      { title: 'API Integration', href: '/software-api' },
-      { title: 'Available templates to get you started', href: '/templates' },
+      // { title: 'API Integration', href: '/software-api' },
+      // { title: 'Available templates to get you started', href: '/templates' },
       { title: 'Software FAQ', href: '/software-faq' },
     ],
   },
