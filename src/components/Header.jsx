@@ -72,7 +72,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
           <ModeToggle />
         </div>
         <div className="hidden min-[416px]:contents">
-          <Button href="#">Start Selling</Button>
+          <Button href="https://dash.whop.com">Start Selling</Button>
         </div>
       </div>
     </motion.div>

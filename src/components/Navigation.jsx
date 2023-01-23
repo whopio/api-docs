@@ -272,7 +272,7 @@ export const navigation = [
     links: [
       { title: 'Getting listed', href: '/listed' },
       { title: 'Algorithm', href: '/algorithm' },
-      { title: 'Marketplace FAQ', href: '/marketplace-faq' },
+      // { title: 'Marketplace FAQ', href: '/marketplace-faq' },
     ],
   },
   // {
