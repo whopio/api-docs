@@ -44,7 +44,7 @@ export function Guides() {
                 {guide.description}
               </p>
               <p className="mt-4">
-                <Button href={guide.href} variant="text" arrow="right" className='text-[#fc8f79]'>
+                <Button href={guide.href} variant="text" arrow="right" className='text-[#fc8f79] hover:text-[#fc8f79] dark:text-[#fc8f79] dark:hover:text-[#fc8f79]'>
                   Learn more
                 </Button>
               </p>

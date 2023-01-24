@@ -12,6 +12,7 @@ import {
 import { useMobileNavigationStore } from './MobileNavigation'
 import { ModeToggle } from './ModeToggle'
 import { MobileSearch, Search } from './Search'
+import { SocialButton } from './SocialButton'
 
 function TopLevelNavItem({ href, children }) {
   return (
@@ -69,6 +70,10 @@ export const Header = forwardRef(function Header({ className }, ref) {
         <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
         <div className="flex gap-4">
           <MobileSearch />
+          <SocialButton href="https://twitter.com/whopio" icon="twitter" />
+          <SocialButton href="https://discord.gg/rAtbcf48SX" icon="discord" />
+          <SocialButton href="https://www.youtube.com/@WhopIO" icon="youtube" />
+          <SocialButton href="https://instagram.com/whop.io" icon="instagram" />
           <ModeToggle />
         </div>
         <div className="hidden min-[416px]:contents">
