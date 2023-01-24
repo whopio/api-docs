@@ -8,7 +8,7 @@ import { HeroPattern } from '../components/HeroPattern'
 
 ## Integration process:
 
-Our integration allows customers who purchase your product via Whop to easily access and use your software. The primary integration process is relatively simple, and mainly involves creating a route in your webapp to handle incoming users from the marketplace. The route will handle a **`code`** parameter, which can be used to log the user in or check their access to your product. 
+Our integration allows customers who purchase your product via Whop to easily access and use your software. The primary integration process is relatively simple, and mainly involves creating a route in your webapp to handle incoming users from the marketplace. The route will handle a **`code`** parameter, which can be used to log the user in or check their access to your product. Users are sent directly to your URL with the code parameter automatically added. This is how you look up the user.
 
 Example: `https://your-site.xyz/callback/whop?code=xxxxxxxx`
 
@@ -31,10 +31,11 @@ To start the integration process, you will need to head to your [developer setti
     export default function Callback({ query }) {
         // Use the code parameter to request an authorization token
         const code = query.code
+
 }
-    ```
-    ```python
-    from flask import Flask, request, redirect
+`
+    `python
+from flask import Flask, request, redirect
 
     app = Flask(__name__)
 
@@ -50,7 +51,8 @@ To start the integration process, you will need to head to your [developer setti
             # Use the code to request an authorization token
         end
     end
-```
+
+````
 </CodeGroup>
 
 This code creates a callback route that accepts the code from the callback url and you can use the code to request an authorization token.
@@ -117,7 +119,8 @@ This code creates a callback route that accepts the code from the callback url a
         end
         JSON.parse(response.body)
     end
-```
+````
+
 </CodeGroup>
 
 This function takes in the code, clientId, clientSecret, and redirectUri as arguments and makes a POST request to the specified API endpoint. The code and other parameters are passed in the body of the request. The function returns the data from the API response which includes the access_token.
@@ -170,7 +173,8 @@ This function takes in the code, clientId, clientSecret, and redirectUri as argu
         end
         JSON.parse(response.body)
     end
-```
+
+````
 </CodeGroup>
 
 This function takes in the resource ID and access token as arguments and makes a GET request to the specified API endpoint. The access token is included in the Authorization header of the request. The function returns the data from the API response.
@@ -179,7 +183,7 @@ This function takes in the resource ID and access token as arguments and makes a
 
 Integration #1
 
-1. Subscribe to our [webhooks](https://guides.whop.com/sell-access/integrate-via-webhooks) in such a way that you create a user using the info we send on the `membership.went_valid` webhook. 
+1. Subscribe to our [webhooks](https://guides.whop.com/sell-access/integrate-via-webhooks) in such a way that you create a user using the info we send on the `membership.went_valid` webhook.
 2. Create a callback in your webapp such as `/callback/whop` that can handle a `code` parameter such as `https://your-site.xyz/callback/whop?code=xxxxxxxx` and exchange this code for a user authorization token.
 3. Use the webhook event `membership.went_invalid` to shut off the users access and assume they can no longer use your app.
 <br/>
@@ -205,7 +209,7 @@ If you would like to give your users a better experience, add a way for them to 
 <a href={`https://whop.com/oauth?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`}>
     <button>Login with Whop</button>
 </a>
-```
+````
 
 ![Sign in with Whop example](https://i.imgur.com/SmdheT7.png){{ className: 'rounded-lg w-full' }}
 
