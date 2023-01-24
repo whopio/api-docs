@@ -7,19 +7,19 @@ import templateBlack from '../images/templateBlack.png'
 
 const guides = [
   {
-    href: '/software',
+    href: '/software-intro',
     name: 'Software',
     description: 'Sell access to your web app or downloadable software through Whop’s powerful API.',
     image: softwareBlack,
   },
   {
-    href: '/discord',
+    href: '/discord-intro',
     name: 'Discord',
     description: 'Sell access to your Discord community through Whop’s direct Discord integration.',
     image: discordBlack,
   },
   {
-    href: '/templates',
+    href: '/templates-intro',
     name: 'Templates',
     description:
       'Sell access to your templates and make digital fulfilment and distribution easy.',
