@@ -4,8 +4,8 @@ function TwitterIcon(props) {
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
-      fill="currentColor"
-      class="bi bi-twitter"
+      fill="dark:white"
+      class="bi bi-twitter dark:fill-white"
       viewBox="0 0 16 16"
       {...props}
     >
@@ -20,8 +20,8 @@ function InstagramIcon(props) {
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
-      fill="currentColor"
-      class="bi bi-instagram"
+      fill="dark:white"
+      class="bi bi-twitter dark:fill-white"
       viewBox="0 0 16 16"
       {...props}
     >
@@ -36,8 +36,8 @@ function YouTubeIcon(props) {
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
-      fill="currentColor"
-      class="bi bi-youtube"
+      fill="dark:white"
+      class="bi bi-twitter dark:fill-white"
       viewBox="0 0 16 16"
       {...props}
     >
@@ -52,8 +52,8 @@ function DiscordIcon(props) {
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
-      fill="currentColor"
-      class="bi bi-discord"
+      fill="dark:white"
+      class="bi bi-twitter dark:fill-white"
       viewBox="0 0 16 16"
       {...props}
     >
@@ -67,13 +67,13 @@ export function SocialButton(social) {
     <a href={social.href}>
       <button className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5">
         {social.icon === 'twitter' ? (
-          <TwitterIcon className="h-4 w-4 fill-black dark:fill-white" />
+          <TwitterIcon className="h-4 w-4" />
         ) : social.icon === 'instagram' ? (
-          <InstagramIcon className="h-4 w-4 fill-black dark:fill-white" />
+          <InstagramIcon className="h-4 w-4" />
         ) : social.icon === 'youtube' ? (
-          <YouTubeIcon className="h-4 w-4 fill-black dark:fill-white" />
+          <YouTubeIcon className="h-4 w-4" />
         ) : social.icon === 'discord' ? (
-          <DiscordIcon className="h-4 w-4 fill-black dark:fill-white" />
+          <DiscordIcon className="h-4 w-4" />
         ) : null}
       </button>
     </a>
