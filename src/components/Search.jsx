@@ -57,7 +57,7 @@ function useAutocomplete() {
                     params: {
                       hitsPerPage: 5,
                       highlightPreTag:
-                        '<mark class="underline bg-transparent text-emerald-500">',
+                        '<mark class="underline bg-transparent text-[#fc8f79]">',
                       highlightPostTag: '</mark>',
                     },
                   },
@@ -74,7 +74,6 @@ function useAutocomplete() {
 }
 
 function resolveResult(result) {
-  console.log(result, "result")
   let allLevels = Object.keys(result.hierarchy)
   let hierarchy = Object.entries(result._highlightResult.hierarchy).filter(
     ([, { value }]) => Boolean(value)
@@ -90,12 +89,12 @@ function resolveResult(result) {
               allLevels.indexOf(level) <= allLevels.indexOf(result.type)
           )
           .pop()
-
   return {
-    titleHtml: "Hi",
+    titleHtml: hierarchy[0][1].value,
     hierarchyHtml: hierarchy
       .slice(0, levels.indexOf(level))
       .map(([, { value }]) => value),
+    content: result.content
   }
 }
 
@@ -154,7 +153,7 @@ function LoadingIcon(props) {
 
 function SearchResult({ result, resultIndex, autocomplete, collection }) {
   let id = useId()
-  let { titleHtml, hierarchyHtml } = resolveResult(result)
+  let { titleHtml, hierarchyHtml, content } = resolveResult(result)
 
   return (
     <li
@@ -171,7 +170,7 @@ function SearchResult({ result, resultIndex, autocomplete, collection }) {
       <div
         id={`${id}-title`}
         aria-hidden="true"
-        className="text-sm font-medium text-zinc-900 group-aria-selected:text-emerald-500 dark:text-white"
+        className="text-sm font-medium text-zinc-900 group-aria-selected:text-[#fc8f79] dark:text-white"
         dangerouslySetInnerHTML={{ __html: titleHtml }}
       />
       {hierarchyHtml.length > 0 && (
@@ -182,7 +181,7 @@ function SearchResult({ result, resultIndex, autocomplete, collection }) {
         >
           {hierarchyHtml.map((item, itemIndex, items) => (
             <Fragment key={itemIndex}>
-              <span dangerouslySetInnerHTML={{ __html: item }} />
+              <span dangerouslySetInnerHTML={{ __html: content }} />
               <span
                 className={
                   itemIndex === items.length - 1
@@ -265,7 +264,7 @@ const SearchInput = forwardRef(function SearchInput(
       />
       {autocompleteState.status === 'stalled' && (
         <div className="absolute inset-y-0 right-3 flex items-center">
-          <LoadingIcon className="h-5 w-5 animate-spin stroke-zinc-200 text-zinc-900 dark:stroke-zinc-800 dark:text-emerald-400" />
+          <LoadingIcon className="h-5 w-5 animate-spin stroke-zinc-200 text-zinc-900 dark:stroke-zinc-800 dark:text-[#fc8f79]" />
         </div>
       )}
     </div>
