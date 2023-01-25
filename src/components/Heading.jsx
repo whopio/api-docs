@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useInView } from 'framer-motion'
 
@@ -90,7 +90,7 @@ export function Heading({
         {...props}
       >
         {anchor ? (
-          <Anchor id={id} inView={inView}>
+          <Anchor id={id} inView={inView} onClick={navigator.clipboard.writeText(ref.current?.baseURI)}>
             {children}
           </Anchor>
         ) : (

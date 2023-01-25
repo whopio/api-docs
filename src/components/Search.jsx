@@ -89,6 +89,7 @@ function resolveResult(result) {
               allLevels.indexOf(level) <= allLevels.indexOf(result.type)
           )
           .pop()
+  console.log(result)
   return {
     titleHtml: hierarchy[0][1].value,
     hierarchyHtml: hierarchy

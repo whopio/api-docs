@@ -15,13 +15,17 @@ import { HeroPattern } from '../components/HeroPattern'
 
 When users purchase access to products on Whop, they are given a license key. In your software, you can optionally choose to require your users to enter a license key in order to use your software. In order to fetch a users membership by license key, you can use [this endpoint](https://dev.whop.com/reference/retrieve_membership).
 
-## How long should the integration take?
+### How long should the integration take?
 
 All you are really doing, is adding a callback to accept users from Whop. This should take no more than an hour of focus :)
 
 ### Do I need to alter my sign up flow?
 
 No. You can think of this as adding an additional oauth option, except you don’t need to put this on your login page. This is because users who have purchased from Whop, will go directly to your site already logged in. They won’t need to login again.
+
+### How do users who purchased via Whop sign in to use my product?
+
+Users who purchase on Whop can always enter your application from their Whop hub with ease. The callback you added [here](/software-intro#integration-process) makes this possible. Alternatively, if the user chooses to go directly to your website, because you will have their email, you can allow them to login as a normal user via magic link or password reset.
 
 ### I am already using Stripe. Is it hard to switch?
 
