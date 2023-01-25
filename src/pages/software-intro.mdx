@@ -9,11 +9,11 @@ import { CodeGroup } from '../components/Code'
 
 ## Integration process:
 
-Our integration allows customers who purchase your product via Whop to easily access and use your software. The primary integration process is relatively simple, and mainly involves creating a route in your webapp to handle incoming users from the marketplace. The route will handle a **`code`** parameter, which can be used to log the user in or check their access to your product. Users are sent directly to your URL with the code parameter automatically added. This is how you look up the user.
+Our integration allows customers who purchase your product via Whop to easily access and use your software. The primary integration process is relatively simple, and mainly involves creating a route in your webapp to handle incoming users from the marketplace. The route will handle a **`code`** parameter, which can be used to log the user in or check their access to your product. Users are sent directly to your URL with the `**code**` parameter automatically added. This is how you look up the user.
 
 Example: `https://your-site.xyz/callback/whop?code=xxxxxxxx`
 
-Note: Alternatively, we have a simpler integration that involves a license key form of authenticating users. See here
+Note: Alternatively, we have a simpler integration that involves a license key form of authenticating users. See [here](https://dev.whop.com/reference/validate_license)
 
 When all said and done, the integration process involves creating a seamless transition from the marketplace to your software product for a smooth user experience.
 
@@ -32,10 +32,9 @@ To start the integration process, you will need to head to your [developer setti
     export default function Callback({ query }) {
         // Use the code parameter to request an authorization token
         const code = query.code
-
 }
-`
-    `python
+```
+    ```python
 from flask import Flask, request, redirect
 
     app = Flask(__name__)
@@ -52,7 +51,6 @@ from flask import Flask, request, redirect
             # Use the code to request an authorization token
         end
     end
-
 ````
 </CodeGroup>
 
@@ -67,11 +65,11 @@ This code creates a callback route that accepts the code from the callback url a
     const getAuthToken = async (code, clientId, clientSecret, redirectUri) => {
         try {
             const response = await axios.post('https://data.whop.com/oauth/token', {
-            grant_type: 'authorization_code',
-            code,
-            client_id: clientId,
-            client_secret: clientSecret,
-            redirect_uri: redirectUri,
+                grant_type: 'authorization_code',
+                code,
+                client_id: clientId,
+                client_secret: clientSecret,
+                redirect_uri: redirectUri,
             });
             return response.data;
         } catch (error) {
@@ -80,7 +78,6 @@ This code creates a callback route that accepts the code from the callback url a
     };
 
     export default getAuthToken;
-    }
     ```
     ```python
     import requests
@@ -135,9 +132,9 @@ This function takes in the code, clientId, clientSecret, and redirectUri as argu
     const checkAccess = async (accessPassId, accessToken) => {
         try {
             const response = await axios.get(`https://api.whop.com/api/v2/me/has_access/${accessPassId}`, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
             });
             return response.data;
         } catch (error) {
@@ -182,24 +179,27 @@ This function takes in the resource ID and access token as arguments and makes a
 
 ## Integration Examples
 
-Integration #1
+### Integration #1
 
 1. Subscribe to our [webhooks](https://guides.whop.com/sell-access/integrate-via-webhooks) in such a way that you create a user using the info we send on the `membership.went_valid` webhook.
 2. Create a callback in your webapp such as `/callback/whop` that can handle a `code` parameter such as `https://your-site.xyz/callback/whop?code=xxxxxxxx` and exchange this code for a user authorization token.
 3. Use the webhook event `membership.went_invalid` to shut off the users access and assume they can no longer use your app.
+4. View the [Webhook Integration](/webhook) for a full guide on this implementation.
 <br/>
 
-Integration #2
+### Integration #2
 
 1. Create a callback your webapp such as `/callback/whop` that can handle a `code` parameter such as `https://your-site.xyz/callback/whop?code=xxxxxxxx` and exchange this code for a user authorization token.
 2. When the user comes in, either log them in if they have an account or create them an account if they do not yet have one.
 3. Check if the user should be able to access your product by using [this endpoint](https://www.notion.so/7c7d1932b4704212b7b2e1344a7d67ec).
+4. View the [API Integration](https://dev.whop.com/reference/home) for a full guide on this implementation.
 <br/>
 
-Integration #3
+### Integration #3
 
-1. Allow for users to input a license key before being able to use your software
-2. Validate the license using our [validate license endpoint](https://dev.whop.com/reference/validate_license) and save any important info such as the users machine ID, or IP in order to prevent people from using their license key more than once
+1. Allow for users to input a license key before being able to use your software.
+2. Validate the license using our [validate license endpoint](https://dev.whop.com/reference/validate_license) and save any important info such as the users machine ID, or IP in order to prevent people from using their license key more than once.
+3. View the [License Key Integration](https://dev.whop.com/reference/validate_license) for a full guide on this implementation.
 <br/>
 
 ## Adding sign in with Whop (Optional)
@@ -211,6 +211,8 @@ If you would like to give your users a better experience, add a way for them to 
     <button>Login with Whop</button>
 </a>
 ````
+
+After being redirected, the user will be prompted to sign in with their existing Whop account (or to create a new one)
 
 ![Sign in with Whop example](https://i.imgur.com/SmdheT7.png){{ className: 'rounded-lg w-full' }}
 

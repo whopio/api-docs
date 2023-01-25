@@ -5,7 +5,7 @@ function TwitterIcon(props) {
       width="16"
       height="16"
       fill="dark:white"
-      className="bi bi-twitter dark:fill-white"
+      class="bi bi-twitter dark:fill-white"
       viewBox="0 0 16 16"
       {...props}
     >
@@ -21,7 +21,7 @@ function InstagramIcon(props) {
       width="16"
       height="16"
       fill="dark:white"
-      className="bi bi-twitter dark:fill-white"
+      class="bi bi-twitter dark:fill-white"
       viewBox="0 0 16 16"
       {...props}
     >
@@ -37,7 +37,7 @@ function YouTubeIcon(props) {
       width="16"
       height="16"
       fill="dark:white"
-      className="bi bi-twitter dark:fill-white"
+      class="bi bi-twitter dark:fill-white"
       viewBox="0 0 16 16"
       {...props}
     >
@@ -53,7 +53,7 @@ function DiscordIcon(props) {
       width="16"
       height="16"
       fill="dark:white"
-      className="bi bi-twitter dark:fill-white"
+      class="bi bi-twitter dark:fill-white"
       viewBox="0 0 16 16"
       {...props}
     >
