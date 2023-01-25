@@ -74,6 +74,12 @@ export function Heading({
     amount: 'all',
   })
 
+  const [hasWindow, setHasWindow] = useState(false)
+
+  useEffect(() => {
+    setHasWindow(typeof window !== 'undefined')
+  }, [])
+
   useEffect(() => {
     if (level === 2) {
       registerHeading({ id, ref, offsetRem: tag || label ? 8 : 6 })
@@ -90,7 +96,9 @@ export function Heading({
         {...props}
       >
         {anchor ? (
-          <Anchor id={id} inView={inView} onClick={navigator.clipboard.writeText(ref.current?.baseURI)}>
+          <Anchor id={id} inView={inView} onClick={
+            hasWindow && window.navigator.clipboard.writeText(ref.current.baseURI)
+          }>
             {children}
           </Anchor>
         ) : (
