@@ -235,7 +235,9 @@ export const navigation = [
     title: 'Software',
     links: [
       { title: 'Getting Started', href: '/software-intro' },
-      { title: 'Webhook Integration', href: '/webhook' },
+      { title: 'Webhooks', href: '/webhook' },
+      { title: 'License Key Integration', href: '/license-key' },
+      { title: 'Templates', href: '/software-templates' },
       // { title: 'API Integration', href: '/software-api' },
       // { title: 'Available templates to get you started', href: '/templates' },
       { title: 'Software FAQ', href: '/software-faq' },
