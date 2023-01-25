@@ -74,6 +74,7 @@ function useAutocomplete() {
 }
 
 function resolveResult(result) {
+  console.log(result, "result")
   let allLevels = Object.keys(result.hierarchy)
   let hierarchy = Object.entries(result._highlightResult.hierarchy).filter(
     ([, { value }]) => Boolean(value)
@@ -91,7 +92,7 @@ function resolveResult(result) {
           .pop()
 
   return {
-    titleHtml: result._highlightResult.hierarchy[level].value,
+    titleHtml: "Hi",
     hierarchyHtml: hierarchy
       .slice(0, levels.indexOf(level))
       .map(([, { value }]) => value),
