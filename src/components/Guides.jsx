@@ -51,7 +51,7 @@ export function Guides() {
             </div>
             <Image
               src={guide.image}
-              alt=""
+              alt="Guide Category Icon"
               className="h-10 w-auto"
               unoptimized
             />
