@@ -24,9 +24,9 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         {router.pathname === '/' ? (
-          <title>Whop API Reference</title>
+          <title>Whop Docs</title>
         ) : (
-          <title>{`${pageProps.title} - Whop API Reference`}</title>
+          <title>{`${pageProps.title} - Whop Docs`}</title>
         )}
         <meta name="description" content={pageProps.description} />
       </Head>
