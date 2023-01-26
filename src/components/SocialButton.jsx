@@ -64,7 +64,7 @@ function DiscordIcon(props) {
 
 export function SocialButton(social) {
   return (
-    <a href={social.href}>
+    <a href={social.href} className="w-0 hidden md:block md:w-6">
       <button className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5">
         {social.icon === 'twitter' ? (
           <TwitterIcon className="h-4 w-4" />
