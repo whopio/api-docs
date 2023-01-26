@@ -71,7 +71,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
         <div className="flex gap-4">
           <MobileSearch />
           <SocialButton href="https://twitter.com/whopio" icon="twitter" />
-          <SocialButton href="https://discord.gg/rAtbcf48SX" icon="discord" />
+          <SocialButton href="https://discord.gg/mWRKWRezSQ" icon="discord" />
           <SocialButton href="https://www.youtube.com/@WhopIO" icon="youtube" />
           <SocialButton href="https://instagram.com/whop.io" icon="instagram" />
           <ModeToggle />

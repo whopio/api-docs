@@ -208,7 +208,7 @@ function SmallPrint() {
         <SocialLink href="https://twitter.com/whopio" icon={TwitterIcon}>
           Follow us on Twitter
         </SocialLink> 
-        <SocialLink href="https://discord.gg/4b7g5GanvE" icon={DiscordIcon}>
+        <SocialLink href="https://discord.gg/mWRKWRezSQ" icon={DiscordIcon}>
           Join our Discord server
         </SocialLink>
       </div>
