@@ -145,7 +145,7 @@ function NavigationGroup({ group, className }) {
           {group.links.map((link) => (
             <motion.li key={link.href} layout="position" className="relative">
               <NavLink href={link.href} active={link.href === router.pathname}>
-                {link.title}
+                {link.title} {link.icon}
               </NavLink>
               <AnimatePresence mode="popLayout" initial={false}>
                 {link.href === router.pathname && sections.length > 0 && (
@@ -238,9 +238,8 @@ export const navigation = [
       { title: 'Webhooks', href: '/webhook' },
       { title: 'License Key Integration', href: '/license-key' },
       { title: 'Templates', href: '/software-templates' },
-      // { title: 'API Integration', href: '/software-api' },
-      // { title: 'Available templates to get you started', href: '/templates' },
       { title: 'Software FAQ', href: '/software-faq' },
+      { title: 'API Reference', href: 'https://dev.whop.com', icon:<i class="fa-solid fa-arrow-up-right-from-square"></i> }
     ],
   },
   {
@@ -255,70 +254,19 @@ export const navigation = [
       { title: 'Start selling', href: '/templates-intro' },
     ],
   },
-  // {
-  //   title: 'Courses',
-  //   links: [
-  //     { title: 'Start selling', href: '/courses-intro' },
-  //     { title: 'Courses FAQ', href: '/courses-faq' },
-  //   ],
-  // },
-  // {
-  //   title: 'Files',
-  //   links: [
-  //     { title: 'Start selling', href: '/files-intro' },
-  //     { title: 'Files FAQ', href: '/files-faq' },
-  //   ],
-  // },
   {
     title: 'Marketplace',
     links: [
       { title: 'Getting listed', href: '/listed' },
       { title: 'Algorithm', href: '/algorithm' },
-      // { title: 'Marketplace FAQ', href: '/marketplace-faq' },
     ],
   },
-  // {
-  //   title: 'Integrations',
-  //   links: [
-  //     { title: 'Mailmodo', href: '/mailmodo' },
-  //     { title: 'Push Notifications', href: '/notifications' },
-  //     { title: 'Embeds', href: '/embeds' },
-  //     { title: 'Graphic Design / VFX Services', href: '/graphic' },
-  //   ],
-  // },
-  // {
-  //   title: 'Additional Migrations',
-  //   links: [
-  //     { title: 'Migrating from a Custom Dashboard', href: '/custom' },
-  //     { title: 'Migrating from a Patreon', href: '/patreon' },
-  //     { title: 'Migrating from a UpgradeChat', href: '/upgradechat' },
-  //     { title: 'Migrating from a Hyper', href: '/hyper' },
-  //     { title: 'Migrating from a Payrole', href: '/payrole' },
-  //     { title: 'Migrating from a Memberful', href: '/memberful' },
-  //   ],
-  // },
   {
     title: 'Tokengating',
     links: [
       { title: 'Getting started', href: '/tokengating-intro' },
     ],
   },
-  // {
-  //   title: 'Stats',
-  //   links: [
-  //     { title: 'MRR', href: '/mrr' },
-  //     { title: 'Net revenue', href: '/net-revenue' },
-  //   ],
-  // },
-  // {
-  //   title: 'Storefront',
-  //   links: [
-  //     { title: 'Store front vs. product page', href: '/store-vs-product' },
-  //     { title: 'Editing your store', href: '/editing' },
-  //     { title: 'Embeds', href: '/embeds' },
-  //     { title: 'Graphic Design / VFX Services', href: '/graphic' },
-  //   ],
-  // },
 ]
 
 export function Navigation(props) {
