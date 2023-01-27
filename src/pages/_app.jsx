@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }) {
           <title>{`${pageProps.title} - Whop Docs`}</title>
         )}
         <meta name="description" content="This documentation is intended to give you an overview of Whop’s business features, our dashboards flexibility, and provide tips for how to use Whop to streamline your businesses reach, fulfillment, workflow and growth." />
-        <meta property="og:image" content={pageProps.image || 'https://i.imgur.com/mcMNF2o.jpg'} />
+        <meta property="og:image" content={pageProps.image || 'https://i.imgur.com/mDcMMUD.png'} />
       </Head>
       <MDXProvider components={mdxComponents}>
         <Layout {...pageProps}>
