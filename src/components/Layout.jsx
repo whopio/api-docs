@@ -7,6 +7,7 @@ import { Logo } from './Logo'
 import { Navigation } from './Navigation'
 import { Prose } from './Prose'
 import { SectionProvider } from './SectionProvider'
+import { HeroPattern } from './HeroPattern'
 
 export function Layout({ children, sections = [] }) {
   return (
@@ -28,7 +29,10 @@ export function Layout({ children, sections = [] }) {
         </motion.header>
         <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
           <main className="py-16">
-            <Prose as="article">{children}</Prose>
+            <HeroPattern />
+            <Prose as="article">
+              <div className="lead">{children}</div>
+            </Prose>
           </main>
           <Footer />
         </div>

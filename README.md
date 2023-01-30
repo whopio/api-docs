@@ -1,10 +1,15 @@
-# Protocol
+# Whop Docs
 
-Protocol is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+These docs use the Protocol [Tailwind UI](https://tailwindui.com) template, built with [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
 
 ## Getting started
 
-To get started with this template, first install the npm dependencies:
+First clone the repo
+```
+git clone https://github.com/whopio/api-docs.git
+```
+
+Install the npm dependencies
 
 ```bash
 npm install
@@ -19,27 +24,29 @@ npm run dev
 
 Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
 
-## Customizing
+## Editing Guide
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+These docs use MDX, allowing you to write text elements in markdown and add JSX elements as needed. [Here](https://www.markdownguide.org/cheat-sheet/) is a markdown cheat sheet. The site will auto-update as you edit these files.
 
-## Global search
+### New Pages
 
-By default this template uses [Algolia DocSearch](https://docsearch.algolia.com) for the global search. DocSearch is free for open-source projects, and you can sign up for an account on their website. Once your DocSearch account is ready, update the following [environment variables](https://nextjs.org/docs/basic-features/environment-variables) in your project with the values provided by Algolia:
+Create a new mdx file in `src/pages`. Styles and other elements will be automatically applied.
+
+### Adding to Navigation
+
+In `src/components/Navigation.jsx` you can add new elements to the navigation.
+
+### Images and Gifs
+
+Images and gifs are hosted on Imgur. You do not need an account to post. Max file size is 20mb. To set a open graph image use this inside the mdx file. 
 
 ```
-NEXT_PUBLIC_DOCSEARCH_APP_ID=
-NEXT_PUBLIC_DOCSEARCH_API_KEY=
-NEXT_PUBLIC_DOCSEARCH_INDEX_NAME=
-```
-
-## License
-
-This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
+export const image = 'https://i.imgur.com/12345.png'
+``` 
 
 ## Learn more
 
-To learn more about the technologies used in this site template, see the following resources:
+To learn more about the technologies used in these docs, see the following resources:
 
 - [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
 - [Next.js](https://nextjs.org/docs) - the official Next.js documentation
