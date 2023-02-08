@@ -38,9 +38,10 @@ function Eyebrow({ tag, label }) {
   )
 }
 
-function Anchor({ id, inView, children }) {
+function Anchor({ id, inView, children, onClick }) {
   return (
     <Link
+    onClick={onClick}
       href={`#${id}`}
       className="group text-inherit no-underline hover:text-inherit"
     >
@@ -104,9 +105,7 @@ export function Heading({
         {...props}
       >
         {anchor ? (
-          <Anchor id={id} inView={inView} onClick={
-            handleCopyToClipboard()
-          }>
+          <Anchor id={id} inView={inView} onClick={handleCopyToClipboard}>
             {children}
           </Anchor>
         ) : (
