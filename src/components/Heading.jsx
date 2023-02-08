@@ -86,6 +86,14 @@ export function Heading({
     }
   })
 
+  async function handleCopyToClipboard() {
+    try {
+      await navigator.clipboard.writeText(ref.current.baseURI);
+    } catch (error) {
+      console.error('Failed to copy link: ', error);
+    }
+  }
+
   return (
     <>
       <Eyebrow tag={tag} label={label} />
@@ -97,7 +105,7 @@ export function Heading({
       >
         {anchor ? (
           <Anchor id={id} inView={inView} onClick={
-            hasWindow && window.navigator.clipboard.writeText(ref.current.baseURI)
+            handleCopyToClipboard()
           }>
             {children}
           </Anchor>
