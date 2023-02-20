@@ -189,7 +189,7 @@ export const navigation = [
     links: [
       { title: 'What is Whop?', href: '/' },
       { title: 'Fees', href: '/fees' },
-      { title: 'Creating your company', href: '/creating-company'},
+      { title: 'Creating your company', href: '/creating-company' },
     ],
   },
   {
@@ -215,7 +215,7 @@ export const navigation = [
     title: 'Features',
     links: [
       { title: 'Affiliates', href: '/affiliates' },
-      { title: 'Promocodes', href: '/promocodes' },
+      { title: 'Promo Codes', href: '/promo-codes' },
       { title: 'User Feedback', href: '/reviews' },
       { title: 'Checkout Links', href: '/checkout-links' },
       { title: 'Waitlist', href: '/waitlist' },
@@ -240,20 +240,20 @@ export const navigation = [
       { title: 'License Key Integration', href: '/license-key' },
       { title: 'Templates', href: '/software-templates' },
       { title: 'Software FAQ', href: '/software-faq' },
-      { title: 'API Reference', href: 'https://dev.whop.com', icon:<i class="fa-solid fa-arrow-up-right-from-square"></i> }
+      {
+        title: 'API Reference',
+        href: 'https://dev.whop.com',
+        icon: <i class="fa-solid fa-arrow-up-right-from-square"></i>,
+      },
     ],
   },
   {
     title: 'Discord Communities',
-    links: [
-      { title: 'Start selling', href: '/discord-intro' },
-    ],
+    links: [{ title: 'Start selling', href: '/discord-intro' }],
   },
   {
     title: 'Templates',
-    links: [
-      { title: 'Start selling', href: '/templates-intro' },
-    ],
+    links: [{ title: 'Start selling', href: '/templates-intro' }],
   },
   {
     title: 'Marketplace',
@@ -264,9 +264,7 @@ export const navigation = [
   },
   {
     title: 'Tokengating',
-    links: [
-      { title: 'Getting started', href: '/tokengating-intro' },
-    ],
+    links: [{ title: 'Getting started', href: '/tokengating-intro' }],
   },
 ]
 

@@ -41,7 +41,7 @@ const navigation = [
       { title: 'Team Members', href: '/team' },
       { title: 'Email tools', href: '/email' },
       { title: 'Raffles', href: '/raffles' },
-      { title: 'Promocodes', href: '/promocodes' },
+      { title: 'Promo Codes', href: '/promocodes' },
       { title: 'Welcome Message', href: '/welcome' },
     ],
   },
