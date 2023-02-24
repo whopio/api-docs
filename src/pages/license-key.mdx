@@ -1,3 +1,5 @@
+import { CodeGroup } from '../components/Code'
+
 # License Key Integration
 
 When users purchase access to products on Whop, they are given a license key. In your software, you can require your users to enter a license key in order to use your software.
@@ -8,4 +10,32 @@ After you have created your company, create a product and add a license key to t
 
 ![License Key Setup](https://i.imgur.com/77Bkxbl.gif){{ className: 'rounded-lg w-full' }}
 
-Inside your software, you can use [this endpoint](https://dev.whop.com/reference/validate_license) to validate a users’ license key.
+## Integrating with your product
+
+After you've added the license key capability to your product, Whop's API makes it incredibly easy to validate a user's license key.
+
+<CodeGroup
+  title="Validate a License Key"
+  tag="POST"
+  label="memberships/:id/validate_license"
+>
+  ```js
+    import axios from 'axios';
+
+    const checkAccess = async (accessPassId, accessToken) => {
+        try {
+            const response = await axios.get(`https://api.whop.com/api/v2/me/has_access/${id}/validate_license`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    };
+
+    export default checkAccess;
+    ```
+
+</CodeGroup>
