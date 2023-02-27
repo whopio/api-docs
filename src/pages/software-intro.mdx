@@ -193,7 +193,7 @@ Thats it! When a customer purchases a product on Whop, they will automatically b
 
 ### Integration #1
 
-1. Subscribe to our [webhooks](https://guides.whop.com/sell-access/integrate-via-webhooks) in such a way that you create a user using the info we send on the `membership.went_valid` webhook.
+1. Subscribe to our [webhooks](/webhook#what-kind-of-webhooks-do-we-send) in such a way that you create a user using the info we send on the `membership.went_valid` webhook.
 2. Create a callback in your webapp such as `/callback/whop` that can handle a `code` parameter such as `https://your-site.xyz/callback/whop?code=xxxxxxxx` and exchange this code for a user authorization token.
 3. Use the webhook event `membership.went_invalid` to shut off the users access and assume they can no longer use your app.
 4. View the [Webhook Integration](/webhook) for a full guide on this implementation.
