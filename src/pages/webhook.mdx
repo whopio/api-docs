@@ -20,33 +20,63 @@ We send webhooks when key events happen for your company and users. These events
 Thus, your application is simply responsible for accepting incoming requests from Whop and processing them as you see fit.
 
 <hr className="w-9/10 ml-auto mr-auto" />
-`membership.went_valid` - This webhook will fire when a membership becomes valid,
-typically when a membership is created or a user checks out. - Business Logic Example:
-Mark a User's subscription as valid, which allows them to access a gated section
-of my app. - Important Attributes: `id`, `valid`, `status`, `user.id`, `product.id`
+### `membership.went_valid`{' '}
+
+This webhook will fire when a membership becomes valid,
+typically when a membership is created or a user checks out.
+
+**Business Logic Example**: Mark a User's subscription as valid, which allows them to access a gated section of my app.
+
+**Important Attributes**: `id`, `valid`, `status`, `user.id`, `product.id`
+
 <hr className="w-9/10 ml-auto mr-auto" />
-`membership.went_invalid` - This webhook will fire when a membership becomes invalid,
-typically when a subscription is canceled or the membership expires. - Business Logic
-Example: Mark a User's subscription as invalid, which blocks them from accessing
-a gated section of my app. - Important Attributes: `id`, `valid`, `status`, `user.id`,
-`product.id`
+### `membership.went_invalid`
+
+This webhook will fire when a membership becomes invalid,
+typically when a subscription is canceled or the membership expires.
+
+**Business Logic Example**: Mark a User's subscription as invalid, which blocks them from accessing
+a gated section of my app.
+
+**Important Attributes**: `id`, `valid`, `status`, `user.id`, `product.id`
+
 <hr className="w-9/10 ml-auto mr-auto" />
-`membership.metadata_updated` - This webhook will fire when a membership's metadata
-changes. - Business Logic Example: Metadata changes could mean a license key is bound
-to a user's machine, or a license key being reset, etc. - Important Attributes: `id`,
+### `membership.metadata_updated`{' '}
+
+This webhook will fire when a membership's metadata
+changes.
+
+**Business Logic Example**: Metadata changes could mean a license key is bound
+to a user's machine, or a license key being reset, etc.
+
+**Important Attributes**: `id`,
 `valid`, `status`, `user.id`, `product.id`
+
 <hr className="w-9/10 ml-auto mr-auto" />
-`payment.succeded` - This webhook will fire when a payment is successful, for both
-new and existing memberships. - Business Logic Example: Update a User's credit balance
-with the amount of the payment and send them a receipt via email. - Important Attributes:
-`id`, `membership`, `status`, `final_amount`, `user.id`, `product.id`
+### `payment.succeded`
+
+This webhook will fire when a payment is successful, for
+both new and existing memberships.
+
+**Business Logic Example**: Update a User's credit
+balance with the amount of the payment and send them a receipt via email.
+
+**Important Attributes**: `id`, `membership`, `status`, `final_amount`, `user.id`, `product.id`
+
 <hr className="w-9/10 ml-auto mr-auto" />
-`payment.failed` - This webhook will fire whenever a payment attempt fails. This
+### `payment.failed`{' '}
+
+This webhook will fire whenever a payment attempt fails. This
 is usually due to a card having insufficient funds, or a crypto payment not having
-a proper allowance or balance. - Business Logic Example: Record the failed payment
+a proper allowance or balance.
+
+**Business Logic Example**: Record the failed payment
 attempt so that you can remind the user with an overlay inside of your app to have
-them update their payment method. - Important Attributes: `id`, `membership`, `status`,
+them update their payment method.
+
+**Important Attributes**: `id`, `membership`, `status`,
 `final_amount`, `user.id`, `product.id`
+
 <hr className="w-9/10 ml-auto mr-auto" />
 
 <CodeGroup title="Example Responses">
