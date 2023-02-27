@@ -31,6 +31,11 @@ Example: Mark a User's subscription as invalid, which blocks them from accessing
 a gated section of my app. - Important Attributes: `id`, `valid`, `status`, `user.id`,
 `product.id`
 <hr className="w-9/10 ml-auto mr-auto" />
+`membership.metadata_updated` - This webhook will fire when a membership's metadata
+changes. - Business Logic Example: Metadata changes could mean a license key is bound
+to a user's machine, or a license key being reset, etc. - Important Attributes: `id`,
+`valid`, `status`, `user.id`, `product.id`
+<hr className="w-9/10 ml-auto mr-auto" />
 `payment.succeded` - This webhook will fire when a payment is successful, for both
 new and existing memberships. - Business Logic Example: Update a User's credit balance
 with the amount of the payment and send them a receipt via email. - Important Attributes:
