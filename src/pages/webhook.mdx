@@ -45,7 +45,7 @@ them update their payment method. - Important Attributes: `id`, `membership`, `s
 <hr className="w-9/10 ml-auto mr-auto" />
 
 <CodeGroup title="Example Responses">
-  ```text
+  ```json
   {
     "action": "membership.went_valid",
     "data": {
@@ -107,7 +107,7 @@ them update their payment method. - Important Attributes: `id`, `membership`, `s
     }
   }
   ```
-  ```xml
+  ```json
   {
     "action": "payment.succeeded",
     "data": {
@@ -169,7 +169,88 @@ them update their payment method. - Important Attributes: `id`, `membership`, `s
     }
   }
   ```
-
+  ```json
+  {
+    "action": "membership.metadata_updated",
+    "data": {
+      "id": "mem_awUmfLkcJotab0",
+      "product": {
+        "id": "pass_m11FQfj0mJV3p",
+        "name": "Free Picks",
+        "visibility": "visible",
+        "created_at": 1655077534,
+        "experiences": [
+          "exp_XJAAONIsvHkm6q",
+          "exp_TBSUXbcB28CsMJ"
+        ],
+        "plans": [
+          "plan_0j8y5dfol03a3"
+        ]
+      },
+      "user": {
+        "id": "user_q61ixyl8cVGff",
+        "username": "whopinc",
+        "email": "hello@whop.com",
+        "profile_pic_url": "https://cdn.discordapp.com/avatars/781784956044574751/",
+        "social_accounts": [
+          {
+            "service": "discord",
+            "username": "Rodger#6128",
+            "id": "781784956044574751"
+          }
+        ]
+      },
+      "plan": {
+        "id": "plan_0j8y5dfol03a3",
+        "plan_type": "one_time",
+        "release_method": "buy_now",
+        "visibility": "visible",
+        "billing_period": 0,
+        "internal_notes": "Free Picks",
+        "metadata": {},
+        "direct_link": "https://whop.com/checkout/plan_0j8y5dfol03a3?d2c=true",
+        "renewal_price": "0.0",
+        "initial_price": "0.0",
+        "base_currency": "usd",
+        "requirements": {},
+        "release_method_settings": {},
+        "accepted_payment_methods": [
+          "free"
+        ],
+        "stock": 94,
+        "unlimited_stock": false,
+        "created_at": 1641875680,
+        "card_payments": true
+      },
+      "email": "hello@whop.com",
+      "status": "canceled",
+      "valid": false,
+      "cancel_at_period_end": false,
+      "payment_processor": "free",
+      "license_key": "U-1EE960-C3F14028-4D101DW",
+      "metadata": {},
+      "quantity": 1,
+      "wallet_address": null,
+      "custom_fields_responses": {},
+      "discord": {
+        "id": "781784956044574751",
+        "username": "Rodger#6128"
+      },
+      "nft_tokens": [],
+      "expires_at": null,
+      "renewal_period_start": 1642834868,
+      "renewal_period_end": null,
+      "created_at": 1642834868,
+      "manage_url": "https://whop.com/hub?page=products&company=ultimatesportspicks&tab=Manage",
+      "access_pass": {
+        "id": "pass_m11FQfj0mJV3p",
+        "name": "Free Picks",
+        "visibility": "visible",
+        "created_at": 1655077534
+        }
+    }
+  }
+  ```
 </CodeGroup>
 
 View all example responses [here](https://dev.whop.com/reference/view-example-webhooks).
