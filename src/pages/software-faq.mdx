@@ -4,19 +4,23 @@ export const image = 'https://i.imgur.com/sf1Ws0R.png'
 
 ### Does Whop have any available templates to get me started?
 
-[Whop SaaS Template - Vercel](https://vercel.com/templates/next.js/whop-template)
+All of our templates can be found on our [software templates page](/software-templates).
+
+### Does Whop have any official SDKs?
+
+We do! We offer a [type-safe TypeScript/JavaScript SDK](https://github.com/whopio/whop-sdk-ts).
 
 ### How can I integrate license keys on Whop?
 
-When users purchase access to products on Whop, they are given a license key. In your software, you can optionally choose to require your users to enter a license key in order to use your software. In order to fetch a users membership by license key, you can use [this endpoint](https://dev.whop.com/reference/retrieve_membership).
+You can read how to integrate license keys on our [License Key FAQ page](/license-key)!
 
 ### How long should the integration take?
 
-All you are really doing, is adding a callback to accept users from Whop. This should take no more than an hour of focus :)
+This integration is a super easy process, and should only take an hour of focus - just add a callback to accept users from Whop & you're ready to go!
 
 ### Do I need to alter my sign up flow?
 
-No. You can think of this as adding an additional oauth option, except you don’t need to put this on your login page. This is because users who have purchased from Whop, will go directly to your site already logged in. They won’t need to login again.
+No! You can think of this as adding an additional OAuth option, except you don't need to put this on your login page. Users who purchased from Whop will go directly to your site without needing to login again.
 
 ### How do users who purchased via Whop sign in to use my product?
 
@@ -24,10 +28,10 @@ Users who purchase on Whop can always enter your application from their Whop hub
 
 ### I am already using Stripe. Is it hard to switch?
 
-You are not switching. Whop does not replace Stripe. Whop is simply an additional distribution channel for your product. In fact, you can link your existing Stripe to Whop in order to process payments on the same Stripe account.
+Whop is not a replacement for Stripe - it's simply an additional distribution channel for your product. You can actually link your existing Stripe account to Whop in order to process payments on the same account!
 
 ### What is it like to buy software on Whop?
 
-After purchasing access to software on Whop, users will see an area where they can view their purchased product. Here, the user can click to navigate to your app.
+After purchasing access to a software on Whop, users can navigate to their Whop hub to gain acess to your app.
 
 ![Accessing Software](https://i.imgur.com/sf1Ws0R.png){{ className: 'rounded-lg w-full' }}

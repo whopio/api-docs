@@ -1,10 +1,11 @@
 import { CodeGroup } from '../components/Code'
+import { Note } from '../components/mdx'
 
 export const image = 'https://i.imgur.com/Sqptcno.png'
 
 # Getting Started
 
-This guide assumes that you have already [created your company](https://docs.whop.com/creating-company) and are building a software application that you want to sell. View the code for a fully integrated example [here](https://github.com/whopio/readpilot) or see it [live](https://whop.com/read-pilot/).
+We're excited for you to get integrating with Whop! If you haven't already [created your company](/creating-company) or [made a product to sell](/creating-company#creating-your-first-product), you'll want to start there.
 
 ## Integration process
 
@@ -12,9 +13,13 @@ Our integration allows customers who purchase your product via Whop to easily ac
 
 Example: `https://your-site.xyz/callback/whop?code=xxxxxxxx`
 
-Note: Alternatively, we have a simpler integration that involves a license key form of authenticating users. See [here](https://dev.whop.com/reference/validate_license)
+<Note>
+  We have a simpler integration that involves authenticating users via license
+  keys - see [here](https://dev.whop.com/reference/validate_license)
+</Note>
 
-When all said and done, the integration process involves creating a seamless transition from the marketplace to your software product for a smooth user experience.
+When all is said and done, the integration process involves creating a seamless transition
+from the marketplace to your software product for a smooth user experience.
 
 ## Prerequisites
 
@@ -214,7 +219,7 @@ Thats it! When a customer purchases a product on Whop, they will automatically b
 3. View the [License Key Integration](https://dev.whop.com/reference/validate_license) for a full guide on this implementation.
    <br />
 
-## Adding sign in with Whop (Optional)
+### Adding sign in with Whop (Optional)
 
 If you would like to give your users a better experience, add a way for them to authenticate if they originally purchased from Whop. First, you will need to send your users to the Whop OAuth Portal. You can do this by having the user click a login button, which might look something like this:
 
@@ -226,6 +231,6 @@ If you would like to give your users a better experience, add a way for them to 
 </a>
 ```
 
-After being redirected, the user will be prompted to sign in with their existing Whop account (or to create a new one)
+After being redirected, the user will be prompted to sign in with their existing Whop account, or create a new one.
 
 ![Sign in with Whop example](https://i.imgur.com/SmdheT7.png){{ className: 'rounded-lg w-full' }}
