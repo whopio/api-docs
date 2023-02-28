@@ -24,7 +24,7 @@ After you've added the license key capability to your product, Whop's API makes 
 
     const checkAccess = async (accessPassId, accessToken) => {
         try {
-            const response = await axios.get(`https://api.whop.com/api/v2/me/has_access/${id}/validate_license`, {
+            const response = await axios.get(`https://api.whop.com/api/v2/memberships/${id}/validate_license`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
