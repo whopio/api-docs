@@ -253,7 +253,7 @@ export const navigation = [
   },
   {
     title: 'Telegram Channels',
-    links: [{ title: 'Start selling', href: '/telegram-intro' }],
+    links: [{ title: 'Start selling', href: '/telegram' }],
   },
   {
     title: 'Templates',
