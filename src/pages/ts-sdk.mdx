@@ -25,10 +25,47 @@ The Whop TypeScript SDK allows developers to access the Whop API quickly and eas
 
 Make sure that you're on the latest version of Node.js, as well as TypeScript.
 
-<CodeGroup>``` npm install typescript --save-dev ```</CodeGroup>
+```sh
+npm install typescript --save-dev
+```
 
-### Installing Whop's SDK
+## Using Whop's SDK
 
 To begin using Whop's SDK, install the package below.
 
-<CodeGroup>```npm install @whop-sdk/core --save-dev ```</CodeGroup>
+```sh
+npm install @whop-sdk/core --save-dev
+```
+
+Once installed, make sure to retrieve your Whop OAuth credentials (Client ID and Client Secret), and API Key from your [Whop Developer Settings](https://dash.whop.com/settings/developer). You will also need to have created a Product on the Dashboard ([which you can learn how to do here](/creating-company#creating-your-first-product))
+
+### Setting up `.env` file
+
+You'll want to create an `.env` file in your project's root directory - you can store all of your sensitive environment variables related to Whop here.
+
+```ts
+// Found on 'https://dash.whop.com/settings/developer'
+// under 'API Keys' and 'OAuth2 Setup'
+
+WHOP_CLIENT_ID = 'XYVZVMzCEN.......'
+WHOP_CLIENT_SECRET = 'DO7js19JRp.......'
+WHOP_API_KEY = 'pfijRtaYTN.......'
+```
+
+### Initalizing the SDK
+
+To initalize the Whop SDK, you'll want to pass your company's API token that you just got above. This will give you access to progamatically retrieve products, plans, and users.
+
+```ts
+import { WhopSDK } from '@whop-sdk/core'
+
+// Initializing the WhopApi SDK with the 'sdk' variable
+const sdk = new WhopSDK({
+  // Import your WHOP_API_KEY from your .env file
+  TOKEN: process.env.WHOP_API_KEY,
+})
+
+// Recommended to export the function
+// so that it can be quickly and easily used elsewhere
+export default sdk
+```
