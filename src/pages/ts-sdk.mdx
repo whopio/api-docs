@@ -222,3 +222,65 @@ await sdk.webhooks.retrieveWebhook({
   id: `hook_*************` | 'http://yourwebhook.com',
 })
 ```
+
+## Plan-related methods
+
+### List all plans
+
+Returns a collection of plans, based on the supplied filters. If no filters are supplied, all plans (regardless of their current availability) are returned.
+
+```ts
+const plans = await sdk.plans.listPlans({
+  // Optional filters:
+  visibility: 'visible' | 'hidden' | 'archived' | 'quick_link',
+  product_id: string,
+  expand: string[],
+})
+```
+
+### Retrieve a plan
+
+Returns a plan, based on the supplied ID.
+
+```ts
+const plan = await sdk.plans.retrievePlan({
+  id: 'plan_*************',
+})
+```
+
+### Create a plan
+
+Creates a new plan.
+
+// TODO: finish these parameters
+
+```ts
+const plan = await sdk.plans.createPlan({
+  product_id: 'prod_*************',
+  plan_type: 'one_time' | 'recurring',
+  allow_multiple_quantity: boolean,
+  base_currency: string // Any 3 letter currency idenfitier, e.g. 'usd', 'gbp', 'eur'
+  billing_period: number // The number of days between billing periods, if it is a recurring plan
+
+})
+```
+
+### Create a quick link for a plan
+
+Creates a quick link (or a release link) for a plan - this method copies all data from an existing plan, makes a new plan with the same data, and returns a link that can be used as a one-time release link.
+
+```ts
+const plan = await sdk.plans.createQuickLink({
+  mimic_plan_id: 'plan_*************',
+})
+```
+
+## Promo code-related methods
+
+### List all promo codes
+
+Returns a collection of promo codes, based on the supplied filters. If no filters are supplied, all promo codes (regardless of their current availability) are returned.
+
+```ts
+const promoCodes = await sdk.promoCodes.listPromoCodes({})
+```
