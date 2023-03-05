@@ -1,4 +1,4 @@
-import { Note } from '../components/mdx'
+import { Note, Warning } from '../components/mdx'
 import { CodeGroup } from '../components/Code'
 
 # Whop TypeScript SDK
@@ -68,4 +68,147 @@ const sdk = new WhopSDK({
 // Recommended to export the function
 // so that it can be quickly and easily used elsewhere
 export default sdk
+```
+
+# Whop SDK Methods
+
+## Company-related Methods
+
+### Get your company's products
+
+<Warning>These were formerly known as 'passes' or 'access passes'.</Warning>
+
+```ts
+const products = await sdk.products.listProducts({
+  // Optional Arguments
+  // The page number to retrieve
+  page: number,
+  // The number of resources to return per page
+  per: number,
+  // The visibility of the Product
+  visibility: 'visible' | 'hidden' | 'archived' | 'quick_link',
+})
+
+// products: Array<AccessPass>
+/*
+  [
+    {
+      id: ...,
+      name: ...,
+      visibility: ...,
+      created_at: ...,
+    }, ...
+  ]
+*/
+```
+
+### Get a specific product
+
+If you want to access a specific product, get your product's ID from the seller dashboard and call `retrieveProduct`.
+
+```ts
+const product = await sdk.products.retrieveProduct({
+  // The ID of the Product, which will look like `prod_*************` or `pass_*************`
+  id: 'PRODUCT_ID',
+})
+```
+
+### Get your company's reviews
+
+Get your company's reviews using `listReviews` - this will return an array of reviews, as well as pagination values.
+
+```ts
+const reviews = await sdk.reviews.listReviews({}))
+/* {
+  pagination: { current_page: number, total_page: number, total_count: number },
+  data: Array<Review>
+} */
+```
+
+### Get a specific review
+
+If you want to access a specific review, pass your review's ID into `retrieveReview`.
+
+```ts
+const review = await sdk.reviews.retrieveReview({
+  // The ID of the Review, which will look like `rev_*************`
+  id: 'REVIEW_ID',
+})
+```
+
+## User-related Methods
+
+### Get a specific user
+
+Users is anyone that has a registered Whop account - they are not always customers.
+
+The `search` parameter is going to be identifier that can be used to represent a User. This can be a Whop account ID, Discord account ID, or email address
+
+```ts
+const user = await sdk.customers.retrieveCustomer({
+  search: 'user@email.com',
+})
+```
+
+### Get all customers
+
+This method will return all paying customers.
+
+```ts
+const customers = await sdk.customers.listCustomers({})
+```
+
+## Webhook-related Methods
+
+### List all webhooks
+
+This method will list all created webhooks.
+
+```ts
+const webhooks = await sdk.webhooks.listWebhooks({})
+```
+
+### Create a Webhook
+
+This method will create a new webhook - you'll want to pass a webhook URL as the parameter.
+
+```ts
+await sdk.webhooks.createWebhook({
+  createWebhook: 'https://yourwebhook.com',
+})
+```
+
+### Update a Webhook
+
+Use this method to update an already existing webhook. Pass the ID of the webhook parameter, which will look like `hook_*************` or `https://yourwebhook.com`.
+
+Use `enabled` to enable or disable the webhook. Use `url` to update the URL of the webhook.
+
+```ts
+await sdk.webhooks.updateWebhook({
+  id: `hook_*************` | 'http://yourwebhook.com',
+  // Optional arguments:
+  enabled: boolean,
+  url: string,
+})
+```
+
+### Retrieve a Webhook
+
+Use this method to retrieve a webhook URL on an existing webhook.
+
+```ts
+await sdk.webhooks.retrieveWebhook({
+  id: `hook_*************`,
+})
+```
+
+### Delete a Webhook
+
+Use this method to delete a webhook. Pass the ID of the webhook parameter, which will look like `hook_*************` or `https://yourwebhook.com`.
+
+```ts
+await sdk.webhooks.retrieveWebhook({
+  id: `hook_*************` | 'http://yourwebhook.com',
+})
 ```
