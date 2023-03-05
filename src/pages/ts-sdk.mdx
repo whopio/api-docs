@@ -343,3 +343,26 @@ await sdk.promoCodes.updatePromoCode({
   },
 })
 ```
+
+## Payment-related methods
+
+### List all payments
+
+Returns a collection of payments, based on the supplied filters. If no filters are supplied, all payments (regardless of their current status) are returned.
+
+```ts
+const payments = await sdk.payments.listPayments({
+  // Optional arguments:
+  status: 'draft' | 'open' | 'paid' | 'uncollectible' | 'void',
+})
+```
+
+### Retrieve a payment
+
+Returns a payment, based on the supplied ID.
+
+```ts
+const payment = await sdk.payments.retrievePayment({
+  id: 'pay_*************',
+})
+```
