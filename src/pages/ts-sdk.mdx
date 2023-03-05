@@ -261,7 +261,6 @@ const plan = await sdk.plans.createPlan({
   allow_multiple_quantity: boolean,
   base_currency: string // Any 3 letter currency idenfitier, e.g. 'usd', 'gbp', 'eur'
   billing_period: number // The number of days between billing periods, if it is a recurring plan
-
 })
 ```
 
@@ -282,5 +281,65 @@ const plan = await sdk.plans.createQuickLink({
 Returns a collection of promo codes, based on the supplied filters. If no filters are supplied, all promo codes (regardless of their current availability) are returned.
 
 ```ts
-const promoCodes = await sdk.promoCodes.listPromoCodes({})
+const promoCodes = await sdk.promoCodes.listPromoCodes({
+  // Optional arguments:
+  status: 'active' | 'inactive' | 'archived',
+})
+```
+
+### Create a promo code
+
+Creates a new promo code. A promo code can offer a discount or a free period for a specific set of plans or for all plans in your company.
+
+```ts
+import { create_promo_code } from '@whop-sdk/core'
+
+await sdk.promoCodes.createPromoCode({
+  createPromoCode: {
+    amount_off: number,
+    base_currency: create_promo_code.base_currency.USD, // or your base currency
+    code: string,
+    promo_type:
+      create_promo_code.promo_type.FLAT_AMOUNT |
+      create_promo_code.promo_type.PERCENTAGE,
+  },
+})
+```
+
+### Delete a promo code
+
+Deletes a promo code.
+
+```ts
+await sdk.promoCodes.deletePromoCode({
+  id: 'promo_*************',
+})
+```
+
+### Retrieve a promo code
+
+Retrieves a promo code.
+
+```ts
+await sdk.promoCodes.retirevePromoCode({
+  id: 'promo_*************',
+})
+```
+
+### Update a promo code
+
+Updates a promo code.
+
+```ts
+import { update_promo_code } from '@whop-sdk/core'
+
+await sdk.promoCodes.updatePromoCode({
+  id: 'promo_*************',
+  updatePromoCode: {
+    status:
+      update_promo_code.status.ACTIVE |
+      update_promo_code.status.INACTIVE |
+      update_promo_code.status.ARCHIVED,
+  },
+})
 ```
