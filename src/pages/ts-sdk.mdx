@@ -79,8 +79,8 @@ export default sdk
 - [Jump to plan-related methods](#plan-related-methods)
 - [Jump to promo code-related methods](#promo-code-related-methods)
 - [Jump to payment-related methods](#payment-related-methods)
-
 - [Jump to notification-related methods](#notification-related-methods)
+
 - [Jump to membership-related methods](#membership-related-methods)
 - [Jump to experience-related methods](#experience-related-methods)
 - [Jump to event-related methods](#event-related-methods)
@@ -374,4 +374,14 @@ const payment = await sdk.payments.retrievePayment({
 
 ## Notification-related methods
 
-TODO
+### Create push notification
+
+Creates a push notification. `body` will be the message sent.
+
+```ts
+await sdk.notifications.createPushNotification({
+  createPushNotification: {
+    body: string,
+  },
+})
+```
