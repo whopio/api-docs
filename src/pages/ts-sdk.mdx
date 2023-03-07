@@ -385,3 +385,102 @@ await sdk.notifications.createPushNotification({
   },
 })
 ```
+
+## Membership-related methods
+
+### List memberships
+
+Returns a list of memberships, based on the supplied filters. A membership is an instance of a user purchasing a product - if the membership is valid, the user should have access to the experiences associated with the product. If not, the user will have their product's experiences unfulfilled.
+
+This API call, by default, returns 10 objects at a time.
+
+```ts
+const memberships = await sdk.memberships.listMemberships({
+  // Optional arguments:
+  status:
+    'drafted' |
+    'active' |
+    'completed' |
+    'trialing' |
+    'past_due' |
+    'unresolved' |
+    'cancelled' |
+    'expired',
+  plan_id: string, // will look like plan_*************
+  product_id: string, // will look like prod_************* or pass_*************
+  user_id: string, // will look like user_*************,
+  discord_id: string,
+  wallet_address: string,
+  valid: boolean,
+  hide_metadata: boolean,
+})
+```
+
+### Retrieve a membership
+
+Returns a membership, based on the supplied ID.
+
+```ts
+const membership = await sdk.memberships.retrieveMembership({
+  id: 'mem_*************',
+})
+```
+
+### Update a membership
+
+Updates a membership, based on the supplied ID. You can attach metadata to a membership, which can be used to track different parts of a membership - such as a hardware ID, etc.
+
+```ts
+await sdk.memberships.updateMembership({
+  id: 'mem_*************',
+  updateMembership: {
+    metadata: {
+      key: value,
+    },
+  },
+})
+```
+
+### Add free days to a membership
+
+Extend a membership's next renewal date or expiration date by a specified number of days. This is especially useful for promotions or to drive user engagement.
+
+```ts
+await sdk.memberships.addFreeDays({
+  id: 'mem_*************',
+  addFreeDays: {
+    days: number,
+  },
+})
+```
+
+### Teriminate a membership
+
+Terminate a membership, based on the supplied ID. This will **immediately** cancel the membership and prevent the user from accessing the product's experiences.
+
+```ts
+await sdk.memberships.terminateMembership({
+  id: string, // will look like mem_*************
+})
+```
+
+### Cancel a membership
+
+Cancel a membership, based on the supplied ID. This will cancel the membership at the period end.
+
+```ts
+await sdk.memberships.cancelMembership({
+  id: string, // will look like mem_*************
+})
+```
+
+### Validate license key of membership
+
+Validate a license key of a membership, based on the supplied ID. This will return a boolean value, indicating whether the license key is valid or not.
+
+```ts
+const isValid = await sdk.memberships.validateLicenseKey({
+  id: string, // will look like mem_*************
+  licenseKey: string,
+})
+```
