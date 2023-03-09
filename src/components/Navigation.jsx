@@ -256,6 +256,10 @@ export const navigation = [
     links: [{ title: 'Start selling', href: '/telegram' }],
   },
   {
+    title: 'Courses',
+    links: [{ title: 'Start selling', href: '/courses' }],
+  },
+  {
     title: 'Templates',
     links: [{ title: 'Start selling', href: '/templates-intro' }],
   },
