@@ -9,6 +9,16 @@ We're excited for you to get integrating with Whop! If you haven't already [crea
 
 ## Integration process
 
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/UN_eyHYRkis"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  className="h-[450px] w-full rounded-lg"
+></iframe>
+
 Our integration allows customers who purchase your product via Whop to easily access and use your software. The primary integration process is relatively simple, and mainly involves creating a route in your webapp to handle incoming users from the marketplace. The route will handle a **`code`** parameter, which can be used to log the user in or check their access to your product. Users are sent directly to your URL with the **`code`** parameter automatically added. This is how you look up the user.
 
 Example: `https://your-site.xyz/callback/whop?code=xxxxxxxx`
