@@ -1,0 +1,612 @@
+import { Note, Warning } from '../components/mdx'
+import { CodeGroup } from '../components/Code'
+
+# Whop TypeScript SDK
+
+The Whop TypeScript SDK allows developers to access the Whop API quickly and easily.
+
+## Getting Started
+
+<Note>
+  You'll want to make sure that you're signed up for a [Whop seller
+  account](https://dash.whop.com/) and have properly setup your account before
+  proceeding.
+</Note>
+<Note>
+  If you are a new to programming or just interested in creating your app using
+  NextJS and Vercel, we highly recommend you create your web application using
+  our [pre-built template](https://github.com/whopio/next-template). This
+  documentation will focus on creating your web application without a built-in
+  platform like Vercel and framework like Next (while still utilizing the Whop
+  API).
+</Note>
+
+### Installing Required Packages
+
+Make sure that you're on the latest version of Node.js, as well as TypeScript.
+
+```sh
+npm install typescript --save-dev
+```
+
+## Using Whop's SDK
+
+To begin using Whop's SDK, install the package below.
+
+```sh
+npm install @whop-sdk/core --save-dev
+```
+
+Once installed, make sure to retrieve your Whop OAuth credentials (Client ID and Client Secret), and API Key from your [Whop Developer Settings](https://dash.whop.com/settings/developer). You will also need to have created a Product on the Dashboard ([which you can learn how to do here](/creating-company#creating-your-first-product))
+
+### Setting up `.env` file
+
+You'll want to create an `.env` file in your project's root directory - you can store all of your sensitive environment variables related to Whop here.
+
+```ts
+// Found on 'https://dash.whop.com/settings/developer'
+// under 'API Keys' and 'OAuth2 Setup'
+
+WHOP_CLIENT_ID = 'XYVZVMzCEN.......'
+WHOP_CLIENT_SECRET = 'DO7js19JRp.......'
+WHOP_API_KEY = 'pfijRtaYTN.......'
+```
+
+### Initalizing the SDK
+
+To initalize the Whop SDK, you'll want to pass your company's API token that you just got above. This will give you access to progamatically retrieve products, plans, and users.
+
+```ts
+import { WhopSDK } from '@whop-sdk/core'
+
+// Initializing the WhopApi SDK with the 'sdk' variable
+const sdk = new WhopSDK({
+  // Import your WHOP_API_KEY from your .env file
+  TOKEN: process.env.WHOP_API_KEY,
+})
+
+// Recommended to export the function
+// so that it can be quickly and easily used elsewhere
+export default sdk
+```
+
+# Whop SDK Methods
+
+- [Jump to product-related methods](#product-related-methods)
+- [Jump to review-related methods](#review-related-methods)
+- [Jump to user-related methods](#user-related-methods)
+- [Jump to webhook-related methods](#webhook-related-methods)
+- [Jump to plan-related methods](#plan-related-methods)
+- [Jump to promo code-related methods](#promo-code-related-methods)
+- [Jump to payment-related methods](#payment-related-methods)
+- [Jump to notification-related methods](#notification-related-methods)
+- [Jump to membership-related methods](#membership-related-methods)
+- [Jump to experience-related methods](#experience-related-methods)
+- [Jump to event-related methods](#event-related-methods)
+
+## Product-related Methods
+
+### Get your company's products
+
+<Warning>These were formerly known as 'passes' or 'access passes'.</Warning>
+
+```ts
+const products = await sdk.products.listProducts({
+  // Optional Arguments
+  // The page number to retrieve
+  page: number,
+  // The number of resources to return per page
+  per: number,
+  // The visibility of the Product
+  visibility: 'visible' | 'hidden' | 'archived' | 'quick_link',
+})
+
+// products: Array<AccessPass>
+/*
+  [
+    {
+      id: ...,
+      name: ...,
+      visibility: ...,
+      created_at: ...,
+    }, ...
+  ]
+*/
+```
+
+### Get a specific product
+
+If you want to access a specific product, get your product's ID from the seller dashboard and call `retrieveProduct`.
+
+```ts
+const product = await sdk.products.retrieveProduct({
+  // The ID of the Product, which will look like `prod_*************` or `pass_*************`
+  id: 'PRODUCT_ID',
+})
+```
+
+## Review-related methods
+
+### Get your company's reviews
+
+Get your company's reviews using `listReviews` - this will return an array of reviews, as well as pagination values.
+
+```ts
+const reviews = await sdk.reviews.listReviews({}))
+/* {
+  pagination: { current_page: number, total_page: number, total_count: number },
+  data: Array<Review>
+} */
+```
+
+### Get a specific review
+
+If you want to access a specific review, pass your review's ID into `retrieveReview`.
+
+```ts
+const review = await sdk.reviews.retrieveReview({
+  // The ID of the Review, which will look like `rev_*************`
+  id: 'REVIEW_ID',
+})
+```
+
+## User-related Methods
+
+### Get a specific user
+
+Users is anyone that has a registered Whop account - they are not always customers.
+
+The `search` parameter is going to be identifier that can be used to represent a User. This can be a Whop account ID, Discord account ID, or email address
+
+```ts
+const user = await sdk.customers.retrieveCustomer({
+  search: 'user@email.com',
+})
+```
+
+### Get all customers
+
+This method will return all paying customers.
+
+```ts
+const customers = await sdk.customers.listCustomers({})
+```
+
+## Webhook-related Methods
+
+### List all webhooks
+
+This method will list all created webhooks.
+
+```ts
+const webhooks = await sdk.webhooks.listWebhooks({})
+```
+
+### Create a Webhook
+
+This method will create a new webhook - you'll want to pass a webhook URL as the parameter.
+
+```ts
+await sdk.webhooks.createWebhook({
+  createWebhook: {
+    url: 'https://yourwebhook.com',
+  },
+})
+```
+
+### Update a Webhook
+
+Use this method to update an already existing webhook. Pass the ID of the webhook parameter, which will look like `hook_*************` or `https://yourwebhook.com`.
+
+Use `enabled` to enable or disable the webhook. Use `url` to update the URL of the webhook.
+
+```ts
+await sdk.webhooks.updateWebhook({
+  id: `hook_*************` | 'http://yourwebhook.com',
+  // Optional arguments:
+  enabled: boolean,
+  url: string,
+})
+```
+
+### Retrieve a Webhook
+
+Use this method to retrieve a webhook URL on an existing webhook.
+
+```ts
+await sdk.webhooks.retrieveWebhook({
+  id: `hook_*************`,
+})
+```
+
+### Delete a Webhook
+
+Use this method to delete a webhook. Pass the ID of the webhook parameter, which will look like `hook_*************` or `https://yourwebhook.com`.
+
+```ts
+await sdk.webhooks.retrieveWebhook({
+  id: `hook_*************` | 'http://yourwebhook.com',
+})
+```
+
+## Plan-related methods
+
+### List all plans
+
+Returns a collection of plans, based on the supplied filters. If no filters are supplied, all plans (regardless of their current availability) are returned.
+
+```ts
+const plans = await sdk.plans.listPlans({
+  // Optional filters:
+  visibility: 'visible' | 'hidden' | 'archived' | 'quick_link',
+  product_id: string,
+  expand: string[],
+})
+```
+
+### Retrieve a plan
+
+Returns a plan, based on the supplied ID.
+
+```ts
+const plan = await sdk.plans.retrievePlan({
+  id: 'plan_*************',
+})
+```
+
+### Create a plan
+
+Creates a new plan.
+
+```ts
+const plan = await sdk.plans.createPlan({
+  create_plan: {
+    product_id: 'prod_*************',
+    plan_type: 'one_time' | 'recurring',
+    allow_multiple_quantity: boolean,
+    base_currency: string, // Any 3 letter currency idenfitier, e.g. 'usd', 'gbp', 'eur'
+    billing_period: number, // The number of days between billing periods, if it is a recurring plan
+  },
+})
+```
+
+### Create a quick link for a plan
+
+Creates a quick link (or a release link) for a plan - this method copies all data from an existing plan, makes a new plan with the same data, and returns a link that can be used as a one-time release link.
+
+```ts
+const plan = await sdk.plans.createQuickLink({
+  mimic_plan_id: 'plan_*************',
+})
+```
+
+## Promo code-related methods
+
+A promo code can offer a discount or a free period for a specific set of plans or for all plans in your company.
+
+### List all promo codes
+
+Returns a collection of promo codes, based on the supplied filters. If no filters are supplied, all promo codes (regardless of their current availability) are returned.
+
+```ts
+const promoCodes = await sdk.promoCodes.listPromoCodes({
+  // Optional arguments:
+  status: 'active' | 'inactive' | 'archived',
+})
+```
+
+### Create a promo code
+
+Creates a new promo code.
+
+```ts
+import { create_promo_code } from '@whop-sdk/core'
+
+await sdk.promoCodes.createPromoCode({
+  createPromoCode: {
+    amount_off: number,
+    base_currency: create_promo_code.base_currency.USD, // or your base currency
+    code: string,
+    promo_type:
+      create_promo_code.promo_type.FLAT_AMOUNT |
+      create_promo_code.promo_type.PERCENTAGE,
+  },
+})
+```
+
+### Delete a promo code
+
+Deletes a promo code.
+
+```ts
+await sdk.promoCodes.deletePromoCode({
+  id: 'promo_*************',
+})
+```
+
+### Retrieve a promo code
+
+Retrieves a promo code.
+
+```ts
+await sdk.promoCodes.retirevePromoCode({
+  id: 'promo_*************',
+})
+```
+
+### Update a promo code
+
+Updates a promo code.
+
+```ts
+import { update_promo_code } from '@whop-sdk/core'
+
+await sdk.promoCodes.updatePromoCode({
+  id: 'promo_*************',
+  updatePromoCode: {
+    status:
+      update_promo_code.status.ACTIVE |
+      update_promo_code.status.INACTIVE |
+      update_promo_code.status.ARCHIVED,
+  },
+})
+```
+
+## Payment-related methods
+
+### List all payments
+
+Returns a collection of payments, based on the supplied filters. If no filters are supplied, all payments (regardless of their current status) are returned.
+
+```ts
+const payments = await sdk.payments.listPayments({
+  // Optional arguments:
+  status: 'draft' | 'open' | 'paid' | 'uncollectible' | 'void',
+})
+```
+
+### Retrieve a payment
+
+Returns a payment, based on the supplied ID.
+
+```ts
+const payment = await sdk.payments.retrievePayment({
+  id: 'pay_*************',
+})
+```
+
+## Notification-related methods
+
+### Create push notification
+
+Creates a push notification. `body` will be the message sent.
+
+```ts
+await sdk.notifications.createPushNotification({
+  createPushNotification: {
+    body: string,
+  },
+})
+```
+
+## Membership-related methods
+
+A membership is an instance of a user purchasing a product - if the membership is valid, the user should have access to the experiences associated with the product. If not, the user will have their product's experiences unfulfilled.
+
+### List memberships
+
+Returns a list of memberships, based on the supplied filters.
+
+This API call, by default, returns 10 objects at a time.
+
+```ts
+const memberships = await sdk.memberships.listMemberships({
+  // Optional arguments:
+  status:
+    'drafted' |
+    'active' |
+    'completed' |
+    'trialing' |
+    'past_due' |
+    'unresolved' |
+    'cancelled' |
+    'expired',
+  plan_id: string, // will look like plan_*************
+  product_id: string, // will look like prod_************* or pass_*************
+  user_id: string, // will look like user_*************,
+  discord_id: string,
+  wallet_address: string,
+  valid: boolean,
+  hide_metadata: boolean,
+})
+```
+
+### Retrieve a membership
+
+Returns a membership, based on the supplied ID.
+
+```ts
+const membership = await sdk.memberships.retrieveMembership({
+  id: 'mem_*************',
+})
+```
+
+### Update a membership
+
+Updates a membership, based on the supplied ID. You can attach metadata to a membership, which can be used to track different parts of a membership - such as a hardware ID, etc.
+
+```ts
+await sdk.memberships.updateMembership({
+  id: 'mem_*************',
+  updateMembership: {
+    metadata: {
+      key: value,
+    },
+  },
+})
+```
+
+### Add free days to a membership
+
+Extend a membership's next renewal date or expiration date by a specified number of days. This is especially useful for promotions or to drive user engagement.
+
+```ts
+await sdk.memberships.addFreeDays({
+  id: 'mem_*************',
+  addFreeDays: {
+    days: number,
+  },
+})
+```
+
+### Teriminate a membership
+
+Terminate a membership, based on the supplied ID. This will **immediately** cancel the membership and prevent the user from accessing the product's experiences.
+
+```ts
+await sdk.memberships.terminateMembership({
+  id: string, // will look like mem_*************
+})
+```
+
+### Cancel a membership
+
+Cancel a membership, based on the supplied ID. This will cancel the membership at the period end.
+
+```ts
+await sdk.memberships.cancelMembership({
+  id: string, // will look like mem_*************
+})
+```
+
+### Validate license key of membership
+
+Validate a license key of a membership, based on the supplied ID. This will return a boolean value, indicating whether the license key is valid or not.
+
+```ts
+const isValid = await sdk.memberships.validateLicenseKey({
+  id: string, // will look like mem_*************
+  licenseKey: string,
+})
+```
+
+## Experience-related Methods
+
+An experience is a piece of content that a user can access, based on their membership. If a user has a membership that grants them access to an experience, they will be able to access it.
+
+### List experiences
+
+Returns a list of experiences, based on the supplied filters.
+
+This API call, by default, returns 10 objects at a time.
+
+```ts
+const experiences = await sdk.experiences.listExperiences({
+  // Optional arguments:
+  experience_type:
+    'discord' | 'software' | 'custom' | 'native_content' | 'link' | 'file',
+})
+```
+
+### Retrieve an experience
+
+Returns an experience, based on the supplied ID.
+
+```ts
+const experience = await sdk.experiences.retrieveExperience({
+  id: 'exp_*************',
+})
+```
+
+### Update an experience
+
+Updates an experience, based on the supplied ID.
+
+```ts
+await sdk.experiences.updateExperience({
+  id: 'exp_*************',
+  name: string,
+})
+```
+
+### Delete an experience
+
+Deletes an experience, based on the supplied ID.
+
+```ts
+await sdk.experiences.deleteExperience({
+  id: 'exp_*************',
+})
+```
+
+## Event-related methods
+
+### Create an event
+
+Create an event.
+
+```ts
+await sdk.events.createEvent({
+  createEvent: {
+    action: string, // A message to describe the Event
+  },
+})
+```
+
+### Retrieve an event
+
+Retrieve an event.
+
+```ts
+await sdk.events.retrieveEvent({
+  id: 'evnt_*************',
+})
+```
+
+### List events
+
+List events.
+
+```ts
+await sdk.events.listEvents({
+  // Optional arguments:
+  event_type:
+    'welcome' |
+    'page_views' |
+    'affiliates' |
+    'expiring_soon' |
+    'new_members' |
+    'discord_roles' |
+    'updated_payment' |
+    'canceled_membership' |
+    'payment_updates' |
+    'license_key' |
+    'nft_mints_claimed' |
+    'digest' |
+    'misc' |
+    'uncanceled_membership' |
+    'reviews' |
+    'weekly_report' |
+    'new_waitlist_entries' |
+    'new_raffle_entries' |
+    'new_disputes' |
+    'churned_members' |
+    'custom',
+  viewed: boolean,
+  resource_type: 'Payment' | 'Membership' | 'Entry' | 'Review' | 'Dispute',
+})
+```
+
+### Update an event
+
+Update an event.
+
+```ts
+await sdk.events.updateEvent({
+  id: 'evnt_*************',
+  updateEvent: {
+    viewed: boolean,
+    action: string,
+  },
+})
+```
