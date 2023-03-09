@@ -80,8 +80,8 @@ export default sdk
 - [Jump to promo code-related methods](#promo-code-related-methods)
 - [Jump to payment-related methods](#payment-related-methods)
 - [Jump to notification-related methods](#notification-related-methods)
-
 - [Jump to membership-related methods](#membership-related-methods)
+
 - [Jump to experience-related methods](#experience-related-methods)
 - [Jump to event-related methods](#event-related-methods)
 
@@ -281,6 +281,8 @@ const plan = await sdk.plans.createQuickLink({
 
 ## Promo code-related methods
 
+A promo code can offer a discount or a free period for a specific set of plans or for all plans in your company.
+
 ### List all promo codes
 
 Returns a collection of promo codes, based on the supplied filters. If no filters are supplied, all promo codes (regardless of their current availability) are returned.
@@ -294,7 +296,7 @@ const promoCodes = await sdk.promoCodes.listPromoCodes({
 
 ### Create a promo code
 
-Creates a new promo code. A promo code can offer a discount or a free period for a specific set of plans or for all plans in your company.
+Creates a new promo code.
 
 ```ts
 import { create_promo_code } from '@whop-sdk/core'
@@ -388,9 +390,11 @@ await sdk.notifications.createPushNotification({
 
 ## Membership-related methods
 
+A membership is an instance of a user purchasing a product - if the membership is valid, the user should have access to the experiences associated with the product. If not, the user will have their product's experiences unfulfilled.
+
 ### List memberships
 
-Returns a list of memberships, based on the supplied filters. A membership is an instance of a user purchasing a product - if the membership is valid, the user should have access to the experiences associated with the product. If not, the user will have their product's experiences unfulfilled.
+Returns a list of memberships, based on the supplied filters.
 
 This API call, by default, returns 10 objects at a time.
 
@@ -482,5 +486,54 @@ Validate a license key of a membership, based on the supplied ID. This will retu
 const isValid = await sdk.memberships.validateLicenseKey({
   id: string, // will look like mem_*************
   licenseKey: string,
+})
+```
+
+## Experience-related Methods
+
+An experience is a piece of content that a user can access, based on their membership. If a user has a membership that grants them access to an experience, they will be able to access it.
+
+### List experiences
+
+Returns a list of experiences, based on the supplied filters.
+
+This API call, by default, returns 10 objects at a time.
+
+```ts
+const experiences = await sdk.experiences.listExperiences({
+  // Optional arguments:
+  experience_type:
+    'discord' | 'software' | 'custom' | 'native_content' | 'link' | 'file',
+})
+```
+
+### Retrieve an experience
+
+Returns an experience, based on the supplied ID.
+
+```ts
+const experience = await sdk.experiences.retrieveExperience({
+  id: 'exp_*************',
+})
+```
+
+### Update an experience
+
+Updates an experience, based on the supplied ID.
+
+```ts
+await sdk.experiences.updateExperience({
+  id: 'exp_*************',
+  name: string,
+})
+```
+
+### Delete an experience
+
+Deletes an experience, based on the supplied ID.
+
+```ts
+await sdk.experiences.deleteExperience({
+  id: 'exp_*************',
 })
 ```
