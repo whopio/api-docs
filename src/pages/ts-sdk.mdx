@@ -81,7 +81,6 @@ export default sdk
 - [Jump to payment-related methods](#payment-related-methods)
 - [Jump to notification-related methods](#notification-related-methods)
 - [Jump to membership-related methods](#membership-related-methods)
-
 - [Jump to experience-related methods](#experience-related-methods)
 - [Jump to event-related methods](#event-related-methods)
 
@@ -535,5 +534,77 @@ Deletes an experience, based on the supplied ID.
 ```ts
 await sdk.experiences.deleteExperience({
   id: 'exp_*************',
+})
+```
+
+## Event-related methods
+
+### Create an event
+
+Create an event.
+
+```ts
+await sdk.events.createEvent({
+  createEvent: {
+    action: string, // A message to describe the Event
+  },
+})
+```
+
+### Retrieve an event
+
+Retrieve an event.
+
+```ts
+await sdk.events.retrieveEvent({
+  id: 'evnt_*************',
+})
+```
+
+### List events
+
+List events.
+
+```ts
+await sdk.events.listEvents({
+  // Optional arguments:
+  event_type:
+    'welcome' |
+    'page_views' |
+    'affiliates' |
+    'expiring_soon' |
+    'new_members' |
+    'discord_roles' |
+    'updated_payment' |
+    'canceled_membership' |
+    'payment_updates' |
+    'license_key' |
+    'nft_mints_claimed' |
+    'digest' |
+    'misc' |
+    'uncanceled_membership' |
+    'reviews' |
+    'weekly_report' |
+    'new_waitlist_entries' |
+    'new_raffle_entries' |
+    'new_disputes' |
+    'churned_members' |
+    'custom',
+  viewed: boolean,
+  resource_type: 'Payment' | 'Membership' | 'Entry' | 'Review' | 'Dispute',
+})
+```
+
+### Update an event
+
+Update an event.
+
+```ts
+await sdk.events.updateEvent({
+  id: 'evnt_*************',
+  updateEvent: {
+    viewed: boolean,
+    action: string,
+  },
 })
 ```
