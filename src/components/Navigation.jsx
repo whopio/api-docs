@@ -240,6 +240,7 @@ export const navigation = [
       { title: 'License Key Integration', href: '/license-key' },
       { title: 'Templates', href: '/software-templates' },
       { title: 'Software FAQ', href: '/software-faq' },
+      { title: 'TypeScript SDK', href: '/ts-sdk' },
       {
         title: 'API Reference',
         href: 'https://dev.whop.com',
