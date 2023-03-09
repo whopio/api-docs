@@ -188,7 +188,9 @@ This method will create a new webhook - you'll want to pass a webhook URL as the
 
 ```ts
 await sdk.webhooks.createWebhook({
-  createWebhook: 'https://yourwebhook.com',
+  createWebhook: {
+    url: 'https://yourwebhook.com',
+  },
 })
 ```
 
@@ -256,15 +258,15 @@ const plan = await sdk.plans.retrievePlan({
 
 Creates a new plan.
 
-// TODO: finish these parameters
-
 ```ts
 const plan = await sdk.plans.createPlan({
-  product_id: 'prod_*************',
-  plan_type: 'one_time' | 'recurring',
-  allow_multiple_quantity: boolean,
-  base_currency: string // Any 3 letter currency idenfitier, e.g. 'usd', 'gbp', 'eur'
-  billing_period: number // The number of days between billing periods, if it is a recurring plan
+  create_plan: {
+    product_id: 'prod_*************',
+    plan_type: 'one_time' | 'recurring',
+    allow_multiple_quantity: boolean,
+    base_currency: string, // Any 3 letter currency idenfitier, e.g. 'usd', 'gbp', 'eur'
+    billing_period: number, // The number of days between billing periods, if it is a recurring plan
+  },
 })
 ```
 
