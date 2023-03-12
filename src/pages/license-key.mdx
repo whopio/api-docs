@@ -2,40 +2,160 @@ import { CodeGroup } from '../components/Code'
 
 # License Key Integration
 
-When users purchase access to products on Whop, they are given a license key. In your software, you can require your users to enter a license key in order to use your software.
+Whop provides a seamless user experience for purchasing and accessing products. After purchasing a product, users are granted a unique license key that they can use to access and unlock their purchased product. As a developer, you can integrate this feature into your own software by requiring your users to enter their license key before being granted access to the product, or gate certain features of the application behind validating the current license key. This approach not only ensures that only licensed users can use your software, but also enhances security and prevents unauthorized access.
 
-## Setting up on the Whop dashboard
+## Getting started
 
-After you have created your company, create a product and add a license key to the product via your dashboard.
+If you haven't already [created your company](/creating-company) or [made a product to sell](/creating-company#creating-your-first-product), you'll want to start there.
 
+Once you've done that, head to the dashboard to add the license key capability to your product.
 ![License Key Setup](https://i.imgur.com/77Bkxbl.gif){{ className: 'rounded-lg w-full' }}
 
 ## Integrating with your product
 
-After you've added the license key capability to your product, Whop's API makes it incredibly easy to validate a user's license key.
+When integrating Whop's API into your software, you can validate license keys to ensure that only licensed users can access your products. Here's how the key validation process works:
+
+- **Validating Empty Metadata**: If the metadata on the license key is empty (for example, the key is not yet bound to a computer), Whop's API returns a success response with status code 201. This means that the license key is valid and can be used to access the product. Internally, the API sets the metadata of the license key that was passed in the API call.
 
 <CodeGroup
-  title="Validate a License Key"
+title="Validating Empty Metadata"
+tag="POST"
+label="memberships/:id/validate_license"
+>
+
+```js
+import axios from 'axios'
+
+const checkAccess = async (accessPassId, accessToken) => {
+  try {
+    const response = await axios.post(
+      `https://api.whop.com/api/v2/memberships/${id}/validate_license`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: {
+          metadata: {
+            key: 'value', // This is initially setting the key/value pair if it doesn't already exist
+          },
+        },
+      }
+    )
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export default checkAccess
+```
+
+</CodeGroup>
+
+- **Validating Matching Metadata**: If the metadata on the license key is already set, and it matches the metadata that your software sends to Whop's API, then a success response is returned. This means that the license key is valid and can be used to access the product. Whop's API checks every key value pair in the metadata, ensuring that all fields contain the same data.
+
+<CodeGroup
+title="Validating Matching Metadata"
+tag="POST"
+label="memberships/:id/validate_license"
+>
+
+```js
+import axios from 'axios'
+
+const checkAccess = async (accessPassId, accessToken) => {
+  try {
+    const response = await axios.post(
+      `https://api.whop.com/api/v2/memberships/${id}/validate_license`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: {
+          metadata: {
+            key: 'value', // This is now checking the key/value pair
+          },
+        },
+      }
+    )
+  } catch (error) {
+    throw error
+  }
+}
+
+export default checkAccess
+```
+
+</CodeGroup>
+
+- **Validating Mismatched Metadata**: If the metadata on the license key is set, but the metadata fields do not match the metadata that your software sends to Whop's API, a failure response with status code 400 is returned. This means that the license key is not valid and cannot be used to access the product.
+
+<CodeGroup
+  title="Validating Mismatched Metadata"
   tag="POST"
   label="memberships/:id/validate_license"
 >
-  ```js
-    import axios from 'axios';
 
-    const checkAccess = async (accessPassId, accessToken) => {
-        try {
-            const response = await axios.get(`https://api.whop.com/api/v2/memberships/${id}/validate_license`, {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            });
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
-    };
+```js
+import axios from 'axios'
 
-    export default checkAccess;
-    ```
+const checkAccess = async (accessPassId, accessToken) => {
+  try {
+    const response = await axios.post(
+      `https://api.whop.com/api/v2/memberships/${id}/validate_license`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: {
+          metadata: {
+            wrongKey: 'wrongValue', // Different key/value pair than what is set on the license
+          },
+        },
+      }
+    )
+    return response.data // Error is expected here
+  } catch (error) {
+    throw error
+  }
+}
+
+export default checkAccess
+```
+
+</CodeGroup>
+
+- **Removing Metadata**: Users can reset their key's metadata by going to their hub, but you can also programatically call the `validate_license` endpoint with an empty metadata body to reset the key as well.
+
+<CodeGroup
+  title="Removing Metadata"
+  tag="POST"
+  label="memberships/:id/validate_license"
+>
+
+```js
+import axios from 'axios'
+
+const checkAccess = async (accessPassId, accessToken) => {
+  try {
+    const response = await axios.post(
+      `https://api.whop.com/api/v2/memberships/${id}/validate_license`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: {
+          metadata: {}, // Removes previously set metadata
+        },
+      }
+    )
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export default checkAccess
+```
 
 </CodeGroup>
