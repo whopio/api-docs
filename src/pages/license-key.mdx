@@ -136,7 +136,7 @@ export default checkAccess
 ```js
 import axios from 'axios'
 
-const checkAccess = async (accessPassId, accessToken) => {
+const removeAccess = async (accessPassId, accessToken) => {
   try {
     const response = await axios.post(
       `https://api.whop.com/api/v2/memberships/${id}/validate_license`,
@@ -155,7 +155,7 @@ const checkAccess = async (accessPassId, accessToken) => {
   }
 }
 
-export default checkAccess
+export default removeAccess
 ```
 
 </CodeGroup>
