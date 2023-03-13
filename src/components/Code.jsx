@@ -21,8 +21,8 @@ const languageNames = {
   python: 'Python',
   ruby: 'Ruby',
   go: 'Go',
-  text: 'membership.went_valid',
-  xml: 'payment.succeeded',
+  text: 'text',
+  xml: 'XML',
 }
 
 function getPanelTitle({ title, language }) {

@@ -238,8 +238,8 @@ export const navigation = [
       { title: 'Getting started', href: '/software-intro' },
       { title: 'Webhooks', href: '/webhook' },
       { title: 'License key integration', href: '/license-key' },
-      { title: 'Templates', href: '/software-templates' },
       { title: 'Software FAQ', href: '/software-faq' },
+      { title: 'Templates', href: '/software-templates' },
       { title: 'TypeScript SDK', href: '/ts-sdk' },
       {
         title: 'API reference',
