@@ -15,10 +15,12 @@ Once you've done that, head to the dashboard to add the license key capability t
 
 When integrating Whop's API into your software, you can validate license keys to ensure that only licensed users can access your products. Here's how the key validation process works:
 
-- **Validating Empty Metadata**: If the metadata on the license key is empty (for example, the key is not yet bound to a computer), Whop's API returns a success response with status code 201. This means that the license key is valid and can be used to access the product. Internally, the API sets the metadata of the license key that was passed in the API call.
+### Initially Setting the Metadata
+
+If the metadata on the license key is empty (for example, the key is not yet bound to a computer), Whop's API returns a success response with status code `201`. This means that the license key is valid and can be used to access the product. Internally, the API sets the metadata of the license key that was passed in the API call.
 
 <CodeGroup
-title="Validating Empty Metadata"
+title="Initially Setting the Metadata"
 tag="POST"
 label="memberships/:id/validate_license"
 >
@@ -52,110 +54,50 @@ export default checkAccess
 
 </CodeGroup>
 
-- **Validating Matching Metadata**: If the metadata on the license key is already set, and it matches the metadata that your software sends to Whop's API, then a success response is returned. This means that the license key is valid and can be used to access the product. Whop's API checks every key value pair in the metadata, ensuring that all fields contain the same data.
+### Validating Matching Metadata
 
-<CodeGroup
-title="Validating Matching Metadata"
-tag="POST"
-label="memberships/:id/validate_license"
->
+If the metadata on the license key is already set, and it matches the metadata that your software sends to Whop's API, then a success response is returned. This means that the license key is valid and can be used to access the product. Whop's API checks every key value pair in the metadata, ensuring that all fields contain the same data.
 
-```js
-import axios from 'axios'
+Below is example metadata that would return a successful response.
 
-const checkAccess = async (accessPassId, accessToken) => {
-  try {
-    const response = await axios.post(
-      `https://api.whop.com/api/v2/memberships/${id}/validate_license`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: {
-          metadata: {
-            key: 'value', // This is now checking the key/value pair
-          },
-        },
-      }
-    )
-  } catch (error) {
-    throw error
-  }
+**Client-side**
+
+```json
+{
+  "hwid": "098H52ST479QE053V2"
 }
-
-export default checkAccess
 ```
 
-</CodeGroup>
+**Server-side**
 
-- **Validating Mismatched Metadata**: If the metadata on the license key is set, but the metadata fields do not match the metadata that your software sends to Whop's API, a failure response with status code 400 is returned. This means that the license key is not valid and cannot be used to access the product.
-
-<CodeGroup
-  title="Validating Mismatched Metadata"
-  tag="POST"
-  label="memberships/:id/validate_license"
->
-
-```js
-import axios from 'axios'
-
-const checkAccess = async (accessPassId, accessToken) => {
-  try {
-    const response = await axios.post(
-      `https://api.whop.com/api/v2/memberships/${id}/validate_license`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: {
-          metadata: {
-            wrongKey: 'wrongValue', // Different key/value pair than what is set on the license
-          },
-        },
-      }
-    )
-    return response.data // Error is expected here
-  } catch (error) {
-    throw error
-  }
+```json
+{
+  "hwid": "098H52ST479QE053V2"
 }
-
-export default checkAccess
 ```
 
-</CodeGroup>
+### Validating Mismatched Metadata
 
-- **Removing Metadata**: Users can reset their key's metadata by going to their hub, but you can also programatically call the `validate_license` endpoint with an empty metadata body to reset the key as well.
+If the metadata on the license key is set, but the metadata fields do not match the metadata that your software sends to Whop's API, a failure response with status code `400` is returned. This means that the license key is not valid and cannot be used to access the product.
 
-<CodeGroup
-  title="Removing Metadata"
-  tag="POST"
-  label="memberships/:id/validate_license"
->
+Below is example metadata that would return this error.
 
-```js
-import axios from 'axios'
+**Client-side**
 
-const removeAccess = async (accessPassId, accessToken) => {
-  try {
-    const response = await axios.post(
-      `https://api.whop.com/api/v2/memberships/${id}/validate_license`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: {
-          metadata: {}, // Removes previously set metadata
-        },
-      }
-    )
-    return response.data
-  } catch (error) {
-    throw error
-  }
+```json
+{
+  "hwid": "30294GLDKJ54F0SLKF"
 }
-
-export default removeAccess
 ```
 
-</CodeGroup>
+**Server-side**
+
+```json
+{
+  "hwid": "098H52ST479QE053V2"
+}
+```
+
+### Removing Metadata
+
+Users can reset their key's metadata by going to their hub, but you can also programatically call the `validate_license` endpoint with an empty metadata body to reset the key as well.
